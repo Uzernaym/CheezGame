@@ -5,9 +5,52 @@
   </head>
   <body>
     <div>
-      <label>Do you like CheezIts?</label>
-      <input type='text' name='CheezQuestion'>
-      <button>Submit</button>
+      <label>Name?</label>
+        <input type='text' name='Name'>
     </div>
+    <div>
+      <label>Do you like CheezIts?</label>
+        <input type='radio' name='likecheezit' answer='yes'><label>Yes</label>
+        <input type='radio' name='likecheezit' answer='no'><label>No</label>
+    <div>
+      <label>What is life?</label>
+      <input type='text' name="CheezQuestion">
+    </div>
+    </div>
+    <button>Submit</button>
   </body>
+  <script>
+  var $inputs = document.querySelectorAll('input');
+  var $button = document.querySelector('button');
+
+    function storeData() {
+      var data = {};
+
+      for(var i = 0; i < $inputs.length; i++) {
+        var $input = $inputs[i];
+        if($input.type === 'text' || $input.type === 'password') {
+          data[$input.name] = $input.value;
+        }
+          else if($input.type === 'checkbox') {
+            data[$input.name] = $input.checked;
+        }
+          else if($input.type === 'radio') {
+            data[$input.name] = $input.getAttribute('answer');
+          }
+        }
+        sendData(data);
+      }
+
+
+    function sendData(data) {
+      var req = new XMLHttpRequest();
+
+      req.open('POST', '/form', true);
+      req.setRequestHeader('content-type', 'application/json')
+      req.send(JSON.stringify(data));
+    }
+
+
+    $button.addEventListener('click', storeData);
+  </script>
 </html>
