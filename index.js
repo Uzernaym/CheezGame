@@ -38,16 +38,31 @@ app.get('/form', (req, res, next) => {
 
 app.post('/form', (req, res, next) => {
 	var newuser = new usermodel(req.body);
-	newuser.save(function(err) {
-			if(err && err.message.includes('duplicate key error') && err.message.includes('UserName')) {
-				return res.send({error: 'Username, ' + req.body.userName + 'already taken'})
-			}
+
+	var password = req.body.password;
+
+	var salt = crypto.randomBytes(128).toString('base64');
+	newuser.salt = salt;
+
+	var iterations = 10000;
+	crypto.pbkdf2(password, salt, iterations, 256, 'sha256', function(err, hash) {
 		if(err) {
-			return res.send({error: err.message})
+			return res.send({error: err});
 		}
-		res.send({error: null});
-	})
-})
+		newuser.password = hash.toString('base64');
+		newuser.save(function(err) {
+
+			if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
+				return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
+			}
+			if(err) {
+				return res.send({error: err.message});
+			}
+			res.send({error: null});
+		});
+	});
+
+});
 
 app.get('/', (req, res, next) => {
 
