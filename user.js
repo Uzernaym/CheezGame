@@ -4,7 +4,7 @@ var model = mongoose.model('user', new mongoose.Schema({
 	Name: {type: String, unique: true}
 	, Email: {type: String, unique: true}
 	, CheezQuestion: {type: String, unique: true}
-  , likecheezit: {type: boolean}
+  , likecheezit: {type: Boolean}
 	, Password: {type: String}
 }));
 
