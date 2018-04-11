@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var usermodel = require('./user.js').getModel();
+var crypto = require('crypto');
 
 /* The http module is used to listen for requests from a web browser */
 var http = require('http');
