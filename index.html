@@ -73,6 +73,7 @@
           alert(data.error);
         }
       }
+      req.onreadystatechange = readyStateChange;
 
       req.send(JSON.stringify(data));
     }
