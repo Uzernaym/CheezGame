@@ -36,6 +36,11 @@ app.get('/form', (req, res, next) => {
 });
 
 app.post('/form', (req, res, next) => {
+	var newuser = new usermodel(req.body);
+	newuser.save(function(err)) {
+		res.send(err || 'OK');
+	})
+})
 	console.log(req.body);
 	res.send('OK')
 })
