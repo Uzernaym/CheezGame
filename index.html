@@ -31,23 +31,37 @@
   var $inputs = document.querySelectorAll('input');
   var $button = document.querySelector('button');
 
-    function storeData() {
-      var data = {};
+  function storeData() {
 
-      for(var i = 0; i < $inputs.length; i++) {
-        var $input = $inputs[i];
-        if($input.type === 'text' || $input.type === 'password') {
-          data[$input.name] = $input.value;
-        }
-          else if($input.type === 'checkbox') {
-            data[$input.name] = $input.checked;
-        }
-          else if($input.type === 'radio') {
-            data[$input.name] = $input.getAttribute('answer');
-          }
-        }
-        sendData(data);
-      }
+// Sending the data only if the passwords match
+  if(!verifyPassword()) return;
+  var data = {};
+
+// In the function storeData:
+  for(var i = 0; i < $inputs.length; i++) {
+    var $input = $inputs[i];
+    if($input.type === 'text' || $input.type === 'password') {
+      data[$input.name] =  $input.value;
+    } else if($input.type === 'checkbox') {
+      data[$input.name] =  $input.checked;
+    } else if ($input.type === 'radio' && $input.checked) {
+      data[$input.name] = $input.getAttribute('answer');
+    }
+  }
+  sendData(data);
+
+  }
+
+  function verifyPassword() {
+
+    var $passwords = document.querySelectorAll('input[type="password"]');
+    var isSamePassword = $passwords[0].value === $passwords[1].value;
+    if(!isSamePassword) {
+      alert("Please enter the same password!")
+    }
+    return isSamePassword;
+
+  }
 
 
     function sendData(data) {
