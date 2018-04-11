@@ -38,7 +38,7 @@ app.get('/form', (req, res, next) => {
 app.post('/form', (req, res, next) => {
 	var newuser = new usermodel(req.body);
 	newuser.save(function(err) {
-			if(err && err.message.includes('duplicate key error') && err.message.includes('Name')) {
+			if(err && err.message.includes('duplicate key error') && err.message.includes('UserName')) {
 				return res.send({error: 'Username, ' + req.body.userName + 'already taken'})
 			}
 		if(err) {
