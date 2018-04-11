@@ -41,9 +41,6 @@ app.post('/form', (req, res, next) => {
 		res.send(err || 'OK');
 	})
 })
-	console.log(req.body);
-	res.send('OK')
-})
 
 app.get('/', (req, res, next) => {
 
