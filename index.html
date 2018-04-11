@@ -72,6 +72,10 @@
       req.send(JSON.stringify(data));
     }
 
+    function submit() {
+	     var formData = storeData();
+	      sendData(formData);
+    }
 
     $button.addEventListener('click', storeData);
   </script>
