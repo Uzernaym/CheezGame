@@ -1,13 +1,12 @@
 var mongoose = require('mongoose');
 
 var model = mongoose.model('user', new mongoose.Schema({
-	UserName: {type: String, unique: true}
-	, Email: {type: String}
+	userName: {type: String, unique: true}
+	, email: {type: String}
 	, password: {type: String}
+	, salt: {type: String}
 }));
 
 exports.getModel = function() {
 	return model;
 }
-
-salt: {type: String}
