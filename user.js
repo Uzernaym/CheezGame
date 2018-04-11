@@ -5,7 +5,7 @@ var model = mongoose.model('user', new mongoose.Schema({
 	, Email: {type: String, unique: true}
 	, CheezQuestion: {type: String, unique: true}
   , likecheezit: {type: Boolean}
-	, Password: {type: String}
+	, password: {type: String}
 }));
 
 exports.getModel = function() {
