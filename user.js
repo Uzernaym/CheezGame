@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 
 var model = mongoose.model('user', new mongoose.Schema({
-	, Name: {type: String, unique: true}
-	, age: {type: String, unique: true}
-	, email: {type: String, unique: true}
+	Name: {type: String, unique: true}
+	, Age: {type: String, unique: true}
+	, Email: {type: String, unique: true}
 	, password: {type: String}
 }));
 
