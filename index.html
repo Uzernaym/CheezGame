@@ -71,6 +71,17 @@
 
       req.open('POST', '/form', true);
       req.setRequestHeader('content-type', 'application/json')
+
+      function readyStateChange() {
+        if(req.readyState !== 4) return;
+        if(req.status !== 200) return;
+
+        data = JSON.parse(req.responseText);
+        if(data.error) {
+          alert(data.error);
+        }
+      }
+
       req.send(JSON.stringify(data));
     }
 
