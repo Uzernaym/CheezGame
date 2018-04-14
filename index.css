@@ -14,8 +14,9 @@ body {
   height: auto;
 }
 
-h1 {
+div {
   font-family: 'Quicksand', sans-serif;
+  font-size : 20vw
 }
 
 button#all {
