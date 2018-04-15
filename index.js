@@ -50,6 +50,7 @@ function startServer() {
 	addSockets();
 /* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
 	app.use(bodyParser.json({ limit: '16mb' }));
+	app.use(express.static(path.join(__dirname, callback)));
 
 	app.get('/form', (req, res, next) => {
 
@@ -61,7 +62,6 @@ function startServer() {
 	});
 
 	app.post('/form', (req, res, next) => {
-
 	// Converting the request in an user object
 		var newuser = new usermodel(req.body);
 
@@ -98,9 +98,21 @@ app.post('/login', (req, res, next) => {
 
 		var username = req.body.userName;
 		var password = req.body.password;
-		authenticateUser(username, password, (err) => {
-			res.send({error: err});
+		function authenticateUser(username, password, callback) {
+
+		if(!username) return callback('No username given');
+		if(!password) return callback('No password given');
+		usermodel.findOne({userName: username}, (err, user) => {
+			if(err) return callback('Error connecting to database');
+			if(!user) return callback('Incorrect username');
+			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
+				if(err) return callback('Error handling password');
+				if(resp.toString('base64') === user.password) return callback(null);
+				callback('Incorrect password');
+			});
 		});
+
+	}
 	});
 
 app.get('/', (req, res, next) => {
