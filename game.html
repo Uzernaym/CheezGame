@@ -36,6 +36,7 @@
 			}
 			#chat button:hover {
 				font-size:2.2vmax;
+				transition-duration: 0.2s
 			}
 			#chat input {
 				position:absolute;
@@ -58,7 +59,7 @@
 				<button>🚀</button>
 			</div>
 		</div>
-		<script src='/js/socket.io.js'></script>
+		
 		<script>
 			var socket = io();
 			socket.on('new message', function(message) {
