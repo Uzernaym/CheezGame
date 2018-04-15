@@ -51,7 +51,7 @@
 		</style>
 	</head>
 	<body>
-		<canvas></canvas>
+		<canvas width="1920" height="1080"></canvas>
 		<div id='chat'>
 			<ul></ul>
 			<div>
@@ -59,7 +59,7 @@
 				<button>🚀</button>
 			</div>
 		</div>
-		
+
 		<script>
 			var socket = io();
 			socket.on('new message', function(message) {
