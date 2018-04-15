@@ -17,6 +17,11 @@ var app = express();
 /* Creates the web server */
 var server = http.createServer(app);
 
+var Io = require('socket.io');
+
+/* creates the socket server */
+var io = Io(server);
+
 /* Defines what port to use to listen to web requests */
 var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
