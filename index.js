@@ -18,8 +18,6 @@ var app = express();
 /* Creates the web server */
 var server = http.createServer(app);
 
-var Io = require('socket.io');
-
 /* creates the socket server */
 var io = Io(server);
 
@@ -49,7 +47,7 @@ function addSockets() {
 }
 
 function startServer() {
-
+addSockets();
 /* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
 app.use(bodyParser.json({ limit: '16mb' }));
 
@@ -154,8 +152,6 @@ app.get('/game', (req, res, next) => {
 	/* Sends the html file back to the browser */
 	res.sendFile(filePath);
 });
-
-addSockets();
 
 /* Defines what function to all when the server recieves any request from http://localhost:8080 */
 server.on('listening', () => {
