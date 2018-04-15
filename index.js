@@ -22,6 +22,26 @@ var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezit';
 
+function addSockets() {
+
+	io.on('connection', (socket) => {
+
+		console.log('user connected');
+
+		socket.on('disconnect', () => {
+			console.log('user disconnected');
+		});
+
+		socket.on('message', (message) => {
+
+			io.emit('new message', message);
+
+		});
+
+	});
+
+}
+
 function startServer() {
 
 /* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
@@ -128,6 +148,22 @@ app.get('/game', (req, res, next) => {
 	/* Sends the html file back to the browser */
 	res.sendFile(filePath);
 });
+
+addSockets();
+
+	/* Defines what function to all when the server recieves any request from http://localhost:8080 */
+	server.on('listening', () => {
+
+		/* Determining what the server is listening for */
+		var addr = server.address()
+			, bind = typeof addr === 'string'
+				? 'pipe ' + addr
+				: 'port ' + addr.port
+		;
+
+		/* Outputs to the console that the webserver is ready to start listenting to requests */
+		console.log('Listening on ' + bind);
+	});
 
 /* Defines what function to all when the server recieves any request from http://localhost:8080 */
 server.on('listening', () => {
