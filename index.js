@@ -68,8 +68,16 @@ app.post('/form', (req, res, next) => {
 			res.send({error: null});
 		});
 	});
-
 });
+
+app.post('/login', (req, res, next) => {
+
+		var username = req.body.userName;
+		var password = req.body.password;
+		authenticateUser(username, password, (err) => {
+			res.send({error: err});
+		});
+	});
 
 app.get('/', (req, res, next) => {
 
