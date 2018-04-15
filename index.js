@@ -47,51 +47,51 @@ function addSockets() {
 }
 
 function startServer() {
-addSockets();
+	addSockets();
 /* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
-app.use(bodyParser.json({ limit: '16mb' }));
+	app.use(bodyParser.json({ limit: '16mb' }));
 
-app.get('/form', (req, res, next) => {
+	app.get('/form', (req, res, next) => {
 
-	/* Get the absolute path of the html file */
-	var filePath = path.join(__dirname, './index.html')
+		/* Get the absolute path of the html file */
+		var filePath = path.join(__dirname, './index.html')
 
-	/* Sends the html file back to the browser */
-	res.sendFile(filePath);
-});
+		/* Sends the html file back to the browser */
+		res.sendFile(filePath);
+	});
 
-app.post('/form', (req, res, next) => {
+	app.post('/form', (req, res, next) => {
 
 	// Converting the request in an user object
-	var newuser = new usermodel(req.body);
+		var newuser = new usermodel(req.body);
 
 	// Grabbing the password from the request
-	var password = req.body.password;
+		var password = req.body.password;
 
 	// Adding a random string to salt the password with
-	var salt = crypto.randomBytes(128).toString('base64');
-	newuser.salt = salt;
+		var salt = crypto.randomBytes(128).toString('base64');
+		newuser.salt = salt;
 
 	// Winding up the crypto hashing lock 10000 times
-	var iterations = 10000;
-	crypto.pbkdf2(password, salt, iterations, 256, 'sha256', function(err, hash) {
-		if(err) {
-			return res.send({error: err});
-		}
-		newuser.password = hash.toString('base64');
+		var iterations = 10000;
+		crypto.pbkdf2(password, salt, iterations, 256, 'sha256', function(err, hash) {
+			if(err) {
+				return res.send({error: err});
+			}
+			newuser.password = hash.toString('base64');
 		// Saving the user object to the database
-		newuser.save(function(err) {
+			newuser.save(function(err) {
 
 			// Handling the duplicate key errors from database
-			if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
-				return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
-			}
-			if(err) {
-				return res.send({error: err.message});
-			}
-			res.send({error: null});
+				if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
+					return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
+				}
+				if(err) {
+					return res.send({error: err.message});
+				}
+				res.send({error: null});
+			});
 		});
-	});
 });
 
 app.post('/login', (req, res, next) => {
