@@ -50,6 +50,7 @@ function startServer() {
 	addSockets();
 /* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
 	app.use(bodyParser.json({ limit: '16mb' }));
+	app.use(express.static(path.join(__dirname, callback)));
 
 	app.get('/form', (req, res, next) => {
 
