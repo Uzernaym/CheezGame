@@ -157,20 +157,6 @@ app.get('/game', (req, res, next) => {
 
 addSockets();
 
-	/* Defines what function to all when the server recieves any request from http://localhost:8080 */
-	server.on('listening', () => {
-
-		/* Determining what the server is listening for */
-		var addr = server.address()
-			, bind = typeof addr === 'string'
-				? 'pipe ' + addr
-				: 'port ' + addr.port
-		;
-
-		/* Outputs to the console that the webserver is ready to start listenting to requests */
-		console.log('Listening on ' + bind);
-	});
-
 /* Defines what function to all when the server recieves any request from http://localhost:8080 */
 server.on('listening', () => {
 
