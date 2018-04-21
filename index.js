@@ -27,7 +27,6 @@ var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
 var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezit';
 
 function addSockets() {
-	var io = Io(server);
 
 	io.on('connection', (socket) => {
 
@@ -40,17 +39,46 @@ function addSockets() {
 
 			io.emit('new message', message);
 		});
-
 	});
-
 }
 
 function startServer() {
-	addSockets();
-/* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
-	app.use(bodyParser.json({ limit: '16mb' }));
-	app.use(express.static(path.join(__dirname, callback)));
 
+	function authenticateUser(username, password, callback) {
+
+		if(!username) return callback('No username given');
+		if(!password) return callback('No password given');
+		usermodel.findOne({userName: username}, (err, user) => {
+			if(err) return callback('Error connecting to database');
+			if(!user) return callback('Incorrect username');
+			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
+				if(err) return callback('Error handling password');
+				if(resp.toString('base64') === user.password) return callback(null);
+				callback('Incorrect password');
+			});
+		});
+
+	}
+
+	app.use(bodyParser.json({ limit: '16mb' }));
+	app.use(express.static(path.join(__dirname, 'public')));
+
+	app.post('/login', (req, res, next) => {
+
+		var username = req.body.userName;
+		var password = req.body.password;
+		authenticateUser(username, password, (err) => {
+			res.send({error: err});
+		});
+
+	});
+
+	app.get('/login', (req, res, next) => {
+		var filePath = path.join(__dirname, './login.html');
+		res.sendFile(filePath);
+	});
+
+	/* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
 	app.get('/form', (req, res, next) => {
 
 		/* Get the absolute path of the html file */
@@ -62,53 +90,37 @@ function startServer() {
 
 	app.post('/form', (req, res, next) => {
 
-	// Converting the request in an user object
-		var newuser = new usermodel(req.body);
+  	// Converting the request in an user object
+  	var newuser = new usermodel(req.body);
 
-	// Grabbing the password from the request
-		var password = req.body.password;
+  	// Grabbing the password from the request
+  	var password = req.body.password;
 
-	// Adding a random string to salt the password with
-		var salt = crypto.randomBytes(128).toString('base64');
-		newuser.salt = salt;
+  	// Adding a random string to salt the password with
+  	var salt = crypto.randomBytes(128).toString('base64');
+  	newuser.salt = salt;
 
-	// Winding up the crypto hashing lock 10000 times
-		var iterations = 10000;
-		crypto.pbkdf2(password, salt, iterations, 256, 'sha256', function(err, hash) {
-			if(err) {
-				return res.send({error: err});
-			}
-			newuser.password = hash.toString('base64');
-		// Saving the user object to the database
-			newuser.save(function(err) {
+  	// Winding up the crypto hashing lock 10000 times
+  	var iterations = 10000;
+  	crypto.pbkdf2(password, salt, iterations, 256, 'sha256', function(err, hash) {
+  		if(err) {
+  			return res.send({error: err});
+  		}
+  		newuser.password = hash.toString('base64');
+  		// Saving the user object to the database
+  		newuser.save(function(err) {
 
-			// Handling the duplicate key errors from database
-				if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
-					return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
-				}
-				if(err) {
-					return res.send({error: err.message});
-				}
-				res.send({error: null});
-			});
-		});
-});
-
-function authenticateUser(username, password, callback) {
-
-	if(!username) return callback('No username given');
-	if(!password) return callback('No password given');
-	usermodel.findOne({userName: username}, (err, user) => {
-		if(err) return callback('Error connecting to database');
-		if(!user) return callback('Incorrect username');
-		crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
-			if(err) return callback('Error handling password');
-			if(resp.toString('base64') === user.password) return callback(null);
-			callback('Incorrect password');
-		});
-	});
-
-}
+  			// Handling the duplicate key errors from database
+  			if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
+  				return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
+  			}
+  			if(err) {
+  				return res.send({error: err.message});
+  			}
+  			res.send({error: null});
+  		});
+  	});
+  });
 
 app.post('/login', (req, res, next) => {
 		var username = req.body.userName;
@@ -167,6 +179,8 @@ app.get('/game', (req, res, next) => {
 	/* Sends the html file back to the browser */
 	res.sendFile(filePath);
 });
+
+addSockets();
 
 /* Defines what function to all when the server recieves any request from http://localhost:8080 */
 server.on('listening', () => {
