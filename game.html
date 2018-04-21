@@ -62,6 +62,12 @@
 		<script src='/js/socket.io.js'></script>
 		<script>
 			var socket = io();
+			socket.on('new message', function(message) {
+				var $ul = document.querySelector('#chat ul');
+				var $li = document.createElement('li');
+				$li.innerText = message;
+				$ul.appendChild($li)
+			});
 			var $button = document.querySelector('button');
 			var $input = document.querySelector('input');
 			$button.addEventListener('click', function() {
