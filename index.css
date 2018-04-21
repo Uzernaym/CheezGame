@@ -11,7 +11,7 @@
 
 body {
   background: linear-gradient(white, cornflowerblue);
-  height: 100%
+  background-repeat: no-repeat;
 }
 
 div {
