@@ -76,17 +76,17 @@ socket.on('stop typing', function () {
 });
 
 // when the user disconnects.. perform this
-socket.on('disconnect', function () {
-	if (addedUser) {
-		--numUsers;
+	socket.on('disconnect', function () {
+		if (addedUser) {
+			--numUsers;
 
-		// echo globally that this client has left
-		socket.broadcast.emit('user left', {
-			username: socket.username,
-			numUsers: numUsers
-		});
-	}
-});
+			// echo globally that this client has left
+			socket.broadcast.emit('user left', {
+				username: socket.username,
+				numUsers: numUsers
+			});
+		}
+	});
 });
 
 
