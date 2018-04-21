@@ -75,12 +75,6 @@
 					socket.emit('message', $input.value);
 					$input.value = '';
 				}
-				function(e) {
-					if (13 == e.keyCode) {
-						socket.emit('message', $input.value);
-						$input.value = '';
-					}
-				}
 			});
 			var $canvas = document.querySelector('canvas');
 			$canvas.width = window.screen.width;
