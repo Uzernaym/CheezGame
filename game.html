@@ -156,7 +156,6 @@
 		</style>
 	</head>
 	<body>
-		<canvas width="1920" height="1080"></canvas>
 			<ul class="pages">
     <li class="chat page">
       <div class="chatArea">
@@ -174,7 +173,7 @@
 
 		<script src='/js/socket.io.js'></script>
 		<script>
-		$(function() {
+		(function() {
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
