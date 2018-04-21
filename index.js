@@ -36,11 +36,9 @@ function addSockets() {
 		socket.on('disconnect', () => {
 			console.log('user disconnected');
 		});
-
 		socket.on('message', (message) => {
 
 			io.emit('new message', message);
-
 		});
 
 	});
@@ -96,8 +94,23 @@ function startServer() {
 		});
 });
 
-app.post('/login', (req, res, next) => {
+function authenticateUser(username, password, callback) {
 
+	if(!username) return callback('No username given');
+	if(!password) return callback('No password given');
+	usermodel.findOne({userName: username}, (err, user) => {
+		if(err) return callback('Error connecting to database');
+		if(!user) return callback('Incorrect username');
+		crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
+			if(err) return callback('Error handling password');
+			if(resp.toString('base64') === user.password) return callback(null);
+			callback('Incorrect password');
+		});
+	});
+
+}
+
+app.post('/login', (req, res, next) => {
 		var username = req.body.userName;
 		var password = req.body.password;
 		authenticateUser(username, password, (err) => {
