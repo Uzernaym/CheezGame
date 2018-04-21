@@ -17,7 +17,7 @@ var app = express();
 
 /* Creates the web server */
 var server = http.createServer(app);
-
+var server = require('http').createServer(app);
 /* creates the socket server */
 var io = Io(server);
 
