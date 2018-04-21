@@ -74,7 +74,7 @@
 			var $button = document.querySelector('button');
 			var $input = document.querySelector('input');
 
-			io.on('connection', (socket) => {
+			socket.on('connection', (socket) => {
 				socket.emit('user connected');
 
 				socket.on('disconnect', () => {
