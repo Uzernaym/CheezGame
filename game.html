@@ -80,7 +80,7 @@
 				socket.on('disconnect', () => {
 					sockete.emit('user disconnected');
 				});
-			}
+			});
 
 			$button.addEventListener('click', function() {
 				if($input.value) {
