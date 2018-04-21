@@ -21,6 +21,7 @@
 				width:28vw;
 				height:80vh;
 				border-color: black
+				background-color: white
 			}
 			#chat button {
 				position:absolute;
@@ -69,8 +70,18 @@
 				$li.innerText = message;
 				$ul.appendChild($li)
 			});
+
 			var $button = document.querySelector('button');
 			var $input = document.querySelector('input');
+
+			io.on('connection', (socket) => {
+				socket.emit('user connected');
+
+				socket.on('disconnect', () => {
+					sockete.emit('user disconnected');
+				});
+			}
+
 			$button.addEventListener('click', function() {
 				if($input.value) {
 					socket.emit('message', $input.value);

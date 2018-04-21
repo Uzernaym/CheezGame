@@ -28,15 +28,15 @@ var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezit';
 
 function addSockets() {
 
-	io.on('connection', (socket) => {
+		io.on('connection', (socket) => {
 
-		console.log('user connected');
-		socket.emit('user connected');
+			console.log('user connected');
+			socket.emit('user connected');
 
-		socket.on('disconnect', () => {
-			console.log('user disconnected');
-			socket.emit('user disconnected');
-		});
+			socket.on('disconnect', () => {
+				console.log('user disconnected');
+				socket.emit('user disconnected');
+			});
 		socket.on('message', (message) => {
 
 			io.emit('new message', message);
