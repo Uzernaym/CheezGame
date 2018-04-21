@@ -34,13 +34,13 @@
   ];
 
   // Initialize variables
-  var $window = $(window);
-  var $usernameInput = $('.usernameInput'); // Input for username
-  var $messages = $('.messages'); // Messages area
-  var $inputMessage = $('.inputMessage'); // Input message input box
+  var $window = (window);
+  var $usernameInput = ('.usernameInput'); // Input for username
+  var $messages = ('.messages'); // Messages area
+  var $inputMessage = ('.inputMessage'); // Input message input box
 
-  var $loginPage = $('.login.page'); // The login page
-  var $chatPage = $('.chat.page'); // The chatroom page
+  var $loginPage = ('.login.page'); // The login page
+  var $chatPage = ('.chat.page'); // The chatroom page
 
   // Prompt for setting a username
   var username;
@@ -96,7 +96,7 @@
 
   // Log a message
   function log (message, options) {
-    var $el = $('<li>').addClass('log').text(message);
+    var $el = ('<li>').addClass('log').text(message);
     addMessageElement($el, options);
   }
 
@@ -110,14 +110,14 @@
       $typingMessages.remove();
     }
 
-    var $usernameDiv = $('<span class="username"/>')
+    var $usernameDiv = ('<span class="username"/>')
       .text(data.username)
       .css('color', getUsernameColor(data.username));
-    var $messageBodyDiv = $('<span class="messageBody">')
+    var $messageBodyDiv = ('<span class="messageBody">')
       .text(data.message);
 
     var typingClass = data.typing ? 'typing' : '';
-    var $messageDiv = $('<li class="message"/>')
+    var $messageDiv = ('<li class="message"/>')
       .data('username', data.username)
       .addClass(typingClass)
       .append($usernameDiv, $messageBodyDiv);
@@ -145,7 +145,7 @@
   // options.prepend - If the element should prepend
   //   all other messages (default = false)
   function addMessageElement (el, options) {
-    var $el = $(el);
+    var $el = (el);
 
     // Setup default options
     if (!options) {
@@ -172,7 +172,7 @@
 
   // Prevents input from having injected markup
   function cleanInput (input) {
-    return $('<div/>').text(input).html();
+    return ('<div/>').text(input).html();
   }
 
   // Updates the typing event
@@ -197,8 +197,8 @@
 
   // Gets the 'X is typing' messages of a user
   function getTypingMessages (data) {
-    return $('.typing.message').filter(function (i) {
-      return $(this).data('username') === data.username;
+    return ('.typing.message').filter(function (i) {
+      return (this).data('username') === data.username;
     });
   }
 
