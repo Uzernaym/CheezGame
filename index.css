@@ -16,11 +16,13 @@ body {
 
 div {
   font-family: 'Quicksand', sans-serif;
-  font-size : 5vw
+  font-size : 3vw
 }
 
 button#all {
   border: solid 1px white;
   cursor: pointer;
   padding: center
+  position: relative;
+  height: auto;
 }
