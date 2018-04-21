@@ -16,10 +16,10 @@ var path = require('path');
 var app = express();
 
 /* Creates the web server */
-var server = ('http').createServer(app);
+var server = http.createServer(app);
 
 /* creates the socket server */
-var io = require('../..')(server);
+var io = Io(server);
 
 /* Defines what port to use to listen to web requests */
 var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
