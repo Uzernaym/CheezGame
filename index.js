@@ -16,10 +16,10 @@ var path = require('path');
 var app = express();
 
 /* Creates the web server */
-var server = http.createServer(app);
+var server = ('http').createServer(app);
 
 /* creates the socket server */
-var io = Io(server);
+var io = require('../..')(server);
 
 /* Defines what port to use to listen to web requests */
 var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
@@ -233,6 +233,13 @@ app.get('/game', (req, res, next) => {
 app.get('/game.css', (req, res, next) => {
 	/* Get the absolute path of the html file */
 	var filePath = path.join(__dirname, './game.css')
+	/* Sends the html file back to the browser */
+	res.sendFile(filePath);
+});
+
+app.get('/game.js', (req, res, next) => {
+	/* Get the absolute path of the html file */
+	var filePath = path.join(__dirname, './game.js')
 	/* Sends the html file back to the browser */
 	res.sendFile(filePath);
 });
