@@ -31,9 +31,11 @@ function addSockets() {
 	io.on('connection', (socket) => {
 
 		console.log('user connected');
+		socket.emit('user connected');
 
 		socket.on('disconnect', () => {
 			console.log('user disconnected');
+			socket.emit('user disconnected');
 		});
 		socket.on('message', (message) => {
 
