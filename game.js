@@ -64,6 +64,9 @@ $(function() {
         username: username,
         message: message
       });
+
+    if(docuent.activeElement.tagName !== 'INPUT') return;
+    if(message === "") return;
       // tell server to execute 'new message' and send along one parameter
       socket.emit('new message', message);
     }
@@ -267,6 +270,8 @@ req.send(JSON.stringify(data));
       }
 	});
 */
+document.body.addEventListener('keypress')
+
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
