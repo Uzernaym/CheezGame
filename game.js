@@ -190,6 +190,18 @@ $(function() {
 
   // Keyboard events
 
+  var $button = document.querySelector('button');
+	var $input = document.querySelector('input');
+	$button.addEventListener('click', function() {
+		if($input.value) {
+			sendMessage();
+			socket.emit('stop typing');
+      typing = false;
+    } else {
+      setUsername();
+      }
+	}
+
   $window.keydown(function (event) {
     // Auto-focus the current input when a key is typed
     if (!(event.ctrlKey || event.metaKey || event.altKey)) {
