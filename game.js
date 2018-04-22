@@ -36,7 +36,7 @@ $(function() {
   }
 
   // Sets the client's username
-  function setUsername () {
+  function setUsername (username, passworld, callback) {
     username = cleanInput($usernameInput.val().trim());
 
     if(!username) return callback('No username given');
@@ -49,14 +49,15 @@ $(function() {
 				if(resp.toString('base64') === user.password) return callback(null);
 				callback('Incorrect password');
         // If the username is valid
-      }) else (username) {
-          $loginPage.fadeOut();
-          $chatPage.show();
-          $loginPage.off('click');
-          $currentInput = $inputMessage.focus();
+          else (username) {
+            $loginPage.fadeout();
+            $chatPage.show();
+            $loginPage.off('click');
+            $currentInput = $inputMessage.focus();
 
-          // Tell the server your username
-          socket.emit('add user', username);
+            // Tell the server your username
+            socket.emit('add user', username);
+          }
         });
 			});
 		});
