@@ -36,7 +36,7 @@ $(function() {
   }
 
   // Sets the client's username
-  function setUsername () {
+  function setUsername (username, password, callback) {
     username = cleanInput($usernameInput.val().trim());
 
     if(!username) return callback('No username given');

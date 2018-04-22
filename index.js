@@ -127,7 +127,7 @@ function startServer() {
 
 		var username = req.body.userName;
 		var password = req.body.password;
-		authenticateUser(username, password, (err) => {
+		setUsername(username, password, (err) => {
 			res.send({error: err});
 		});
 
