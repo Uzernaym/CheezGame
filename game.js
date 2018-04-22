@@ -52,7 +52,7 @@ $(function() {
 		});
 
     // If the username is valid
-    else (username) {
+    else if (username) {
       $loginPage.fadeOut();
       $chatPage.show();
       $loginPage.off('click');
