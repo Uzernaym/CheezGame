@@ -39,8 +39,20 @@ $(function() {
   function setUsername () {
     username = cleanInput($usernameInput.val().trim());
 
+    if(!username) return callback('No username given');
+		if(!password) return callback('No password given');
+		usermodel.findOne({userName: username}, (err, user) => {
+			if(err) return callback('Error connecting to database');
+			if(!user) return callback('Incorrect username');
+			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
+				if(err) return callback('Error handling password');
+				if(resp.toString('base64') === user.password) return callback(null);
+				callback('Incorrect password');
+			});
+		});
+
     // If the username is valid
-    if (username) {
+    else (username) {
       $loginPage.fadeOut();
       $chatPage.show();
       $loginPage.off('click');
@@ -284,7 +296,7 @@ req.send(JSON.stringify(data));
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to Socket.IO Chat – ";
+    var message = "The Cheezit – ";
     log(message, {
       prepend: true
     });
