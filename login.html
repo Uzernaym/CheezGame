@@ -43,12 +43,12 @@ function sendData(data) {
 	req.setRequestHeader('content-type', 'application/json');
 	// Explain to the server that we are sending the data in json format
 	// Alert the user to any errors from the server
-	function readyStateChange() {
-		if(req.readyState !== 4) return;
-		if(req.status !== 200) return;
-    var body = JSON.parse(req.responseText);
-    if (body.error) {
-      return alert(body.error);
+  function readyStateChange() {
+    if(req.readyState !== 4) return;
+    if(req.status !== 200) return;
+    data = JSON.parse(req.responseText);
+    if(data.error) {
+      return alert(data.error);
     }
 		window.location.href = '/game';
 	}
