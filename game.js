@@ -64,7 +64,7 @@ $(function() {
             socket.emit('add user', username);
         };
 			});
-		});
+		};
 
   // Sends a chat message
   function sendMessage () {
