@@ -46,7 +46,10 @@ function sendData(data) {
 	function readyStateChange() {
 		if(req.readyState !== 4) return;
 		if(req.status !== 200) return;
-    
+    var body = JSON.parse(req.responseText);
+    if (body.error) {
+      return alert(body.error);
+    }
 		window.location.href = '/game';
 	}
 	req.onreadystatechange = readyStateChange;
