@@ -94,7 +94,7 @@ socket.on('disconnect', function () {
 
 function startServer() {
 
-	function authenticateUser(username, password) {
+	function authenticateUser(username, password, callback) {
 
 		if(!username) return callback('No username given');
 		if(!password) return callback('No password given');
