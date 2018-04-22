@@ -58,6 +58,7 @@ socket.on('add user', function (username) {
 	socket.broadcast.emit('user joined', {
 		username: socket.username,
 		numUsers: numUsers
+		console.log('User Connected')
 	});
 });
 
@@ -79,6 +80,7 @@ socket.on('stop typing', function () {
 socket.on('disconnect', function () {
 	if (addedUser) {
 		--numUsers;
+		console.log('User Disconnected')
 
 		// echo globally that this client has left
 		socket.broadcast.emit('user left', {
@@ -123,6 +125,7 @@ function startServer() {
 
 	});
 
+/*
 	app.post('/game', (req, res, next) => {
 
 		var username = req.body.userName;
@@ -130,8 +133,8 @@ function startServer() {
 		setUsername(username, password, (err) => {
 			res.send({error: err});
 		});
-
 	});
+*/
 
 	app.get('/login', (req, res, next) => {
 		var filePath = path.join(__dirname, './login.html');
