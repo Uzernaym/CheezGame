@@ -200,7 +200,7 @@ $(function() {
     } else {
       setUsername();
       }
-	}
+	});
 
   $window.keydown(function (event) {
     // Auto-focus the current input when a key is typed
