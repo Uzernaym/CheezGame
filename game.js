@@ -272,18 +272,22 @@ req.send(JSON.stringify(data));
 */
 //document.body.addEventListener('keypress')
 
-  $window.keydown(function (event) {
-    // When the client hits ENTER on their keyboard
-    if (event.which === 13) {
-      if (username) {
-        sendMessage();
-        socket.emit('stop typing');
-        typing = false;
-      } else {
-        setUsername();
-      }
+$window.keydown(function (event) {
+  // Auto-focus the current input when a key is typed
+  if (!(event.ctrlKey || event.metaKey || event.altKey)) {
+    $currentInput.focus();
+  }
+  // When the client hits ENTER on their keyboard
+  if (event.which === 13) {
+    if (username) {
+      sendMessage();
+      socket.emit('stop typing');
+      typing = false;
+    } else {
+      setUsername();
     }
-  });
+  }
+});
 
   $inputMessage.on('input', function() {
     updateTyping();
