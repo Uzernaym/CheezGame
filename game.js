@@ -48,19 +48,18 @@ $(function() {
 				if(err) return callback('Error handling password');
 				if(resp.toString('base64') === user.password) return callback(null);
 				callback('Incorrect password');
+        // If the username is valid
+        else if (username) {
+          $loginPage.fadeOut();
+          $chatPage.show();
+          $loginPage.off('click');
+          $currentInput = $inputMessage.focus();
+
+          // Tell the server your username
+          socket.emit('add user', username);
+        }
 			});
 		});
-
-    // If the username is valid
-    else if (username) {
-      $loginPage.fadeOut();
-      $chatPage.show();
-      $loginPage.off('click');
-      $currentInput = $inputMessage.focus();
-
-      // Tell the server your username
-      socket.emit('add user', username);
-    }
   }
 
   // Sends a chat message
