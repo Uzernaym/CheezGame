@@ -203,6 +203,7 @@ $(function() {
 
 
 
+
   // Button Stuff
   function grabData() {
     // Getting all the input tags
@@ -251,6 +252,11 @@ req.send(JSON.stringify(data));
     }
     var $button = document.querySelector('button')
     $button.addEventListener('click', submit)
+
+
+
+
+
 
   // Keyboard events
 
