@@ -227,7 +227,7 @@ $(function() {
     // Creating a new request to the server that contains the data
     var req = new XMLHttpRequest();
     // Opening up a connection with the server to 'POST' data
-    req.open('POST', '/login', true);
+    req.open('POST', '/game', true);
     // Explain to the server that we are sending the data in json format
     req.setRequestHeader('content-type', 'application/json');
     // Explain to the server that we are sending the data in json format

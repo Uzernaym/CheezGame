@@ -103,8 +103,8 @@ function startServer() {
 			if(!user) return callback('Incorrect username');
 			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', function(err, resp) {
 				if(err) return callback('Error handling password');
-				if(resp.toString('base64') === user.password) return callback(null);
-				callback('Incorrect password');
+				if(resp.toString('base64') === user.password) return callback('Incorrect password');
+				callback(null);
 			});
 		});
 
@@ -181,14 +181,6 @@ function startServer() {
   		});
   	});
   });
-
-app.post('/login', (req, res, next) => {
-		var username = req.body.userName;
-		var password = req.body.password;
-		authenticateUser(username, password, (err) => {
-			res.send({error: err});
-		});
-	});
 
 app.get('/', (req, res, next) => {
 
