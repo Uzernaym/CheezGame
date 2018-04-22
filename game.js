@@ -21,6 +21,7 @@ $(function() {
   var connected = false;
   var typing = false;
   var lastTypingTime;
+  var $currentInput;
 
   var socket = io();
 
