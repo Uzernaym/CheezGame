@@ -41,10 +41,10 @@ $(function() {
 
     if(!username) return callback('No username given');
 		if(!password) return callback('No password given');
-		usermodel.findOne({userName: username}, (err, user) => {
+		usermodel.findOne({userName: username}, function(err, user) {
 			if(err) return callback('Error connecting to database');
 			if(!user) return callback('Incorrect username');
-			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
+			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', function(err, resp) {
 				if(err) return callback('Error handling password');
 				if(resp.toString('base64') === user.password) return callback(null);
 				callback('Incorrect password');
