@@ -270,7 +270,7 @@ req.send(JSON.stringify(data));
       }
 	});
 */
-document.body.addEventListener('keypress')
+//document.body.addEventListener('keypress')
 
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
