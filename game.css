@@ -62,7 +62,7 @@ ul {
   width: 100%;
 }
 
-.login.page .form .usernameInput {
+.login.page .form .userName {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #fff;
@@ -81,7 +81,7 @@ ul {
   letter-spacing: 3px;
 }
 
-.login.page .title, .login.page .usernameInput {
+.login.page .title, .login.page .userName {
   color: #fff;
   font-weight: 100;
 }
