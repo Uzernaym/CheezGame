@@ -63,8 +63,8 @@ $(function() {
             // Tell the server your username
             socket.emit('add user', username);
         };
-			});
-		};
+			};
+		});
 
   // Sends a chat message
   function sendMessage () {
