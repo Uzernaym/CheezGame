@@ -9,7 +9,7 @@ $(function() {
 
   // Initialize variables
   var $window = $(window);
-  var $usernameInput = $('.userName'); // Input for username
+  var $usernameInput = $('.usernameInput'); // Input for username
   var $messages = $('.messages'); // Messages area
   var $inputMessage = $('.inputMessage'); // Input message input box
 
@@ -36,11 +36,10 @@ $(function() {
   }
 
   // Sets the client's username
-  function setUsername (username, password) {
+  function setUsername () {
     username = cleanInput($usernameInput.val().trim());
 
     // If the username is valid
-
     if (username) {
       $loginPage.fadeOut();
       $chatPage.show();
@@ -64,9 +63,6 @@ $(function() {
         username: username,
         message: message
       });
-
-    if(docuent.activeElement.tagName !== 'INPUT') return;
-    if(message === "") return;
       // tell server to execute 'new message' and send along one parameter
       socket.emit('new message', message);
     }
@@ -192,98 +188,20 @@ $(function() {
     return COLORS[index];
   }
 
-
-
-
-
-  // Button Stuff
-  /*function grabData() {
-    // Getting all the input tags
-    var $inputs = document.querySelectorAll('input');
-    // Defining a variable to store all the data
-    var data = {};
-    // Looping through all the input tags
-    for(var i = 0; i < $inputs.length; i++) {
-        // Getting the ith input tag
-        var $input = $inputs[i];
-        // Getting the name of the data that the input tag holds
-        var name = $input.name;
-        // Getting the value that the user entered into the input tag
-        var value = $input.value;
-        // Storing the value and its name
-        data[name] = value
-    }
-    // Outputting the data
-    return data
-  }
-  function sendData(data) {
-    // Creating a new request to the server that contains the data
-    var req = new XMLHttpRequest();
-    // Opening up a connection with the server to 'POST' data
-    req.open('POST', '/game', true);
-    // Explain to the server that we are sending the data in json format
-    req.setRequestHeader('content-type', 'application/json');
-    // Explain to the server that we are sending the data in json format
-    // Alert the user to any errors from the server
-    function readyStateChange() {
-      if(req.readyState !== 4) return;
-      if(req.status !== 200) return;
-      data = JSON.parse(req.responseText);
-      if(data.error) {
-        return alert(data.error);
-}
-$loginPage.fadeOut();
-$chatPage.show();
-$loginPage.off('click');
-$currentInput = $inputMessage.focus();
-
-// Tell the server your username
-socket.emit('add user', username);;
-}
-req.onreadystatechange = readyStateChange;
-// Sending the data in JSON format
-req.send(JSON.stringify(data));
-}
-    function submit() {
-      var formData = grabData();
-      sendData(formData);
-    }
-    var $button = document.querySelector('button')
-    $button.addEventListener('click', submit)
-*/
-
-
-
-
-
   // Keyboard events
-/*
-  var $button = document.querySelector('button');
-	var $input = document.querySelector('input');
-	$button.addEventListener('click', function() {
-		if($input.value) {
-			sendMessage();
-			socket.emit('stop typing');
-      typing = false;
-    } else {
-      setUsername();
-      }
-	});
-*/
-//document.body.addEventListener('keypress')
 
-$window.keydown(function (event) {
-  // When the client hits ENTER on their keyboard
-  if (event.which === 13) {
-    if (username) {
-      sendMessage();
-      socket.emit('stop typing');
-      typing = false;
-    } else {
-      setUsername();
+  $window.keydown(function (event) {
+    // When the client hits ENTER on their keyboard
+    if (event.which === 13) {
+      if (username) {
+        sendMessage();
+        socket.emit('stop typing');
+        typing = false;
+      } else {
+        setUsername();
+      }
     }
-  }
-});
+  });
 
   $inputMessage.on('input', function() {
     updateTyping();
@@ -302,7 +220,7 @@ $window.keydown(function (event) {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "The Cheezit – ";
+    var message = "Welcome to the CheezIt – ";
     log(message, {
       prepend: true
     });
@@ -338,18 +256,18 @@ $window.keydown(function (event) {
   });
 
   socket.on('disconnect', function () {
-    log('You have been disconnected');
+    log('you have been disconnected');
   });
 
   socket.on('reconnect', function () {
-    log('You have been reconnected');
+    log('you have been reconnected');
     if (username) {
       socket.emit('add user', username);
     }
   });
 
   socket.on('reconnect_error', function () {
-    log('Attempt to reconnect has failed');
+    log('attempt to reconnect has failed');
   });
 
 });
