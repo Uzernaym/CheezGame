@@ -333,18 +333,18 @@ req.send(JSON.stringify(data));
   });
 
   socket.on('disconnect', function () {
-    log('you have been disconnected');
+    log('You have been disconnected');
   });
 
   socket.on('reconnect', function () {
-    log('you have been reconnected');
+    log('You have been reconnected');
     if (username) {
       socket.emit('add user', username);
     }
   });
 
   socket.on('reconnect_error', function () {
-    log('attempt to reconnect has failed');
+    log('Attempt to reconnect has failed');
   });
 
 });
