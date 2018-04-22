@@ -190,6 +190,20 @@ $(function() {
 
   // Keyboard events
 
+  var $button = document.querySelector('button')
+  $button.addEventListener('click', submit)
+  
+  function submit() {
+    if (username) {
+      sendMessage();
+      socket.emit('stop typing');
+      typing = false;
+    } else {
+      setUsername();
+    }
+  }
+});
+
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
@@ -271,10 +285,3 @@ $(function() {
   });
 
 });
-
-function submit() {
-  var formData = grabData();
-  sendData(formData);
-}
-var $button = document.querySelector('button')
-$button.addEventListener('click', submit)
