@@ -14,12 +14,17 @@
       <input class="inputMessage" placeholder="Type here..."/>
     </li>
     <li class="login page">
-			<h1>Login</h1>
-			<div><label>Username</label><div>
-			<div><input type='text' name='userName'></div>
-			<div><label>Password</label><div>
-			<div><input type='password' name='password'></div>
-			<div><button>OK</button></div>
+      <div class="form">
+        <h3 class="title">What's your nickname?</h3>
+        <input class="userName" type="text" maxlength="14" />
+				<button>🚀</button>
+      </div>
+			<div class="form"><label>Username</label><div>
+				<h3 class="title">Username</h3>
+				<input class="userName" type="text" maxlength="14" name="userName"/>
+				<h3 class="title">Password</h3>
+				<input class="userName" type="password" name="password">
+				<button>🚀</button>
 			<script>
 			function grabData() {
 				// Getting all the input tags
@@ -40,37 +45,37 @@
 				// Outputting the data
 				return data
 			}
-function sendData(data) {
-// Creating a new request to the server that contains the data
-var req = new XMLHttpRequest();
-// Opening up a connection with the server to 'POST' data
-req.open('POST', '/login', true);
-// Explain to the server that we are sending the data in json format
-req.setRequestHeader('content-type', 'application/json');
-// Explain to the server that we are sending the data in json format
-// Alert the user to any errors from the server
-function readyStateChange() {
-	if(req.readyState !== 4) return;
-	if(req.status !== 200) return;
-	data = JSON.parse(req.responseText);
-	if(data.error) {
-		return alert(data.error);
+			function sendData(data) {
+				// Creating a new request to the server that contains the data
+				var req = new XMLHttpRequest();
+				// Opening up a connection with the server to 'POST' data
+				req.open('POST', '/login', true);
+				// Explain to the server that we are sending the data in json format
+				req.setRequestHeader('content-type', 'application/json');
+				// Explain to the server that we are sending the data in json format
+				// Alert the user to any errors from the server
+				function readyStateChange() {
+					if(req.readyState !== 4) return;
+					if(req.status !== 200) return;
+					data = JSON.parse(req.responseText);
+					if(data.error) {
+						return alert(data.error);
+		}
+		window.location.href = '/game';
 	}
-	window.location.href = '/game';
-}
-req.onreadystatechange = readyStateChange;
-// Sending the data in JSON format
-req.send(JSON.stringify(data));
-}
-			function submit() {
-				var formData = grabData();
-				sendData(formData);
-			}
-			var $button = document.querySelector('button')
-			$button.addEventListener('click', submit)
-			</script>
-    </li>
-  </ul>
+	req.onreadystatechange = readyStateChange;
+	// Sending the data in JSON format
+	req.send(JSON.stringify(data));
+	}
+				function submit() {
+					var formData = grabData();
+					sendData(formData);
+				}
+				var $button = document.querySelector('button')
+				$button.addEventListener('click', submit)
+				</script>
+    	</li>
+  	</ul>
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script src ='/js/socket.io.js'></script>
