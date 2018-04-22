@@ -271,3 +271,10 @@ $(function() {
   });
 
 });
+
+function submit() {
+  var formData = grabData();
+  sendData(formData);
+}
+var $button = document.querySelector('button')
+$button.addEventListener('click', submit)
