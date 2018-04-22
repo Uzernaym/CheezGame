@@ -36,7 +36,7 @@ $(function() {
   }
 
   // Sets the client's username
-  function setUsername () {
+  function setUsername (username, passworld, callback) {
     username = cleanInput($usernameInput.val().trim());
 
     //if username and password are given
