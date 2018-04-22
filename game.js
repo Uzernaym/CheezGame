@@ -49,7 +49,7 @@ $(function() {
 				if(resp.toString('base64') === user.password) return callback(null);
 				callback('Incorrect password');
         // If the username is valid
-      }))  else (username) {
+      }))  if (username) {
             $loginPage.fadeout();
             $chatPage.show();
             $loginPage.off('click');
