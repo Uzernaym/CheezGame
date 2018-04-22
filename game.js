@@ -36,35 +36,32 @@ $(function() {
   }
 
   // Sets the client's username
-  function setUsername (username, passworld, callback) {
+  function setUsername (username, password, callback) {
     username = cleanInput($usernameInput.val().trim());
 
-    //if username and password are given
     if(!username) return callback('No username given');
 		if(!password) return callback('No password given');
-
-    //if username is in database
 		usermodel.findOne({userName: username}, (err, user) => {
 			if(err) return callback('Error connecting to database');
 			if(!user) return callback('Incorrect username');
-
-    //if password is in database
 			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
 				if(err) return callback('Error handling password');
 				if(resp.toString('base64') === user.password) return callback(null);
 				callback('Incorrect password');
-        // If the username is valid
-          if (username) {
-            $loginPage.fadeout();
-            $chatPage.show();
-            $loginPage.off('click');
-            $currentInput = $inputMessage.focus();
-
-            // Tell the server your username
-            socket.emit('add user', username);
-          };
 			});
 		});
+    // If the username is valid
+
+    if (username) {
+      $loginPage.fadeOut();
+      $chatPage.show();
+      $loginPage.off('click');
+      $currentInput = $inputMessage.focus();
+
+      // Tell the server your username
+      socket.emit('add user', username);
+    }
+  }
 
   // Sends a chat message
   function sendMessage () {
