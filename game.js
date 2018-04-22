@@ -39,11 +39,16 @@ $(function() {
   function setUsername (username, passworld, callback) {
     username = cleanInput($usernameInput.val().trim());
 
+    //if username and password are given
     if(!username) return callback('No username given');
 		if(!password) return callback('No password given');
+
+    //if username is in database
 		usermodel.findOne({userName: username}, (err, user) => {
 			if(err) return callback('Error connecting to database');
 			if(!user) return callback('Incorrect username');
+
+    //if password is in database
 			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
 				if(err) return callback('Error handling password');
 				if(resp.toString('base64') === user.password) return callback(null);
