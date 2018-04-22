@@ -17,7 +17,7 @@ var app = express();
 
 /* Creates the web server */
 var server = http.createServer(app);
-var server = require('http').createServer(app);
+
 /* creates the socket server */
 var io = Io(server);
 
@@ -98,7 +98,7 @@ function startServer() {
 
 		if(!username) return callback('No username given');
 		if(!password) return callback('No password given');
-		usermodel.findOne({usernameInput: username}, (err, user) => {
+		usermodel.findOne({userName: username}, (err, user) => {
 			if(err) return callback('Error connecting to database');
 			if(!user) return callback('Incorrect username');
 			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', (err, resp) => {
@@ -161,7 +161,7 @@ function startServer() {
   		newuser.save(function(err) {
 
   			// Handling the duplicate key errors from database
-  			if(err && err.message.includes('duplicate key error') && err.message.includes('usermameInput')) {
+  			if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
   				return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
   			}
   			if(err) {

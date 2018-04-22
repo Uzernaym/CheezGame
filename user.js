@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var model = mongoose.model('user', new mongoose.Schema({
-	usernameInput: {type: String, unique: true}
+	userName: {type: String, unique: true}
 	, email: {type: String, unique: true}
 	, password: {type: String}
 	, salt: {type: String}
