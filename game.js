@@ -36,7 +36,7 @@ $(function() {
   }
 
   // Sets the client's username
-  function setUsername (username, passworld, callback) {
+  function setUsername () {
     username = cleanInput($usernameInput.val().trim());
 
     //if username and password are given
@@ -62,7 +62,7 @@ $(function() {
 
             // Tell the server your username
             socket.emit('add user', username);
-        };
+          };
 			});
 		});
 
