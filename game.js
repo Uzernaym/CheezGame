@@ -49,7 +49,7 @@ $(function() {
 				if(resp.toString('base64') === user.password) return callback(null);
 				callback('Incorrect password');
         // If the username is valid
-      } else (username) {
+      }) else (username) {
           $loginPage.fadeOut();
           $chatPage.show();
           $loginPage.off('click');
@@ -57,7 +57,7 @@ $(function() {
 
           // Tell the server your username
           socket.emit('add user', username);
-        };
+        });
 			});
 		});
 
