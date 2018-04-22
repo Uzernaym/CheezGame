@@ -58,7 +58,6 @@ socket.on('add user', function (username) {
 	socket.broadcast.emit('user joined', {
 		username: socket.username,
 		numUsers: numUsers
-		console.log('User Connected');
 	});
 });
 
@@ -80,7 +79,6 @@ socket.on('stop typing', function () {
 socket.on('disconnect', function () {
 	if (addedUser) {
 		--numUsers;
-		console.log('User Disconnected');
 
 		// echo globally that this client has left
 		socket.broadcast.emit('user left', {
