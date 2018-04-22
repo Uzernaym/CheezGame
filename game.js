@@ -39,17 +39,6 @@ $(function() {
   function setUsername (username, password) {
     username = cleanInput($usernameInput.val().trim());
 
-    if(!username) return callback('No username given');
-		if(!password) return callback('No password given');
-		usermodel.findOne({userName: username}, function(err, user) {
-			if(err) return callback('Error connecting to database');
-			if(!user) return callback('Incorrect username');
-			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', function(err, resp) {
-				if(err) return callback('Error handling password');
-				if(resp.toString('base64') === user.password) return callback(null);
-				callback('Incorrect password');
-			});
-		});
     // If the username is valid
 
     if (username) {
@@ -240,7 +229,13 @@ $(function() {
       if(data.error) {
         return alert(data.error);
 }
-window.location.href = '/game';
+$loginPage.fadeOut();
+$chatPage.show();
+$loginPage.off('click');
+$currentInput = $inputMessage.focus();
+
+// Tell the server your username
+socket.emit('add user', username);;
 }
 req.onreadystatechange = readyStateChange;
 // Sending the data in JSON format
