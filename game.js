@@ -194,7 +194,7 @@ $(function() {
 
 
   // Button Stuff
-  function grabData() {
+  /*function grabData() {
     // Getting all the input tags
     var $inputs = document.querySelectorAll('input');
     // Defining a variable to store all the data
@@ -247,7 +247,7 @@ req.send(JSON.stringify(data));
     }
     var $button = document.querySelector('button')
     $button.addEventListener('click', submit)
-
+*/
 
 
 
