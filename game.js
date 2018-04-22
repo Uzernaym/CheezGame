@@ -192,7 +192,7 @@ $(function() {
 
   var $button = document.querySelector('button')
   $button.addEventListener('click', submit)
-  
+
   function submit() {
     if (username) {
       sendMessage();
@@ -202,7 +202,6 @@ $(function() {
       setUsername();
     }
   }
-});
 
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
