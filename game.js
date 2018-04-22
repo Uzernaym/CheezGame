@@ -254,7 +254,7 @@ req.send(JSON.stringify(data));
 
 
   // Keyboard events
-
+/*
   var $button = document.querySelector('button');
 	var $input = document.querySelector('input');
 	$button.addEventListener('click', function() {
@@ -266,7 +266,7 @@ req.send(JSON.stringify(data));
       setUsername();
       }
 	});
-
+*/
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
