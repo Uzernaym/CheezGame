@@ -132,7 +132,6 @@ function startServer() {
   });
 
   app.get('/login', (req, res, next) => {
-    if (!req.user) res.redirect('/login');
     var filePath = path.join(__dirname, './login.html');
     res.sendFile(filePath);
   });
