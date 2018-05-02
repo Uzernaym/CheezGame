@@ -31,6 +31,12 @@ ul {
   word-wrap: break-word;
 }
 
+#logout {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+
 /* Pages */
 
 .pages {

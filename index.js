@@ -130,9 +130,15 @@ function startServer() {
   });
 
   app.get('/login', (req, res, next) => {
+    if (!req.user) res.redirect('/login'):
     var filePath = path.join(__dirname, './login.html');
     res.sendFile(filePath);
   });
+
+  app.get('/logout', (req, res, next) => {
+    req.logOut();
+    res.redirect('/login');
+  })
 
 	app.post('/login', (req, res, next) => {
     passport.authenticate('local', function(err, user) {
@@ -220,13 +226,6 @@ app.get('/index.css', (req, res, next) => {
 	/* Get the absolute path of the html file */
 	var filePath = path.join(__dirname, './index.css')
 
-	/* Sends the html file back to the browser */
-	res.sendFile(filePath);
-});
-
-app.get('/login', (req, res, next) => {
-	/* Get the absolute path of the html file */
-	var filePath = path.join(__dirname, './login.html')
 	/* Sends the html file back to the browser */
 	res.sendFile(filePath);
 });
