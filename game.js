@@ -207,7 +207,7 @@ $(function() {
 
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
-    if (event.which === 13 || enterbutton.addEventListener('click')) {
+    if (event.which === 13) {
       if (username) {
         sendMessage();
         socket.emit('stop typing');
