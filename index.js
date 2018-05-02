@@ -104,8 +104,8 @@ function startServer() {
 			if(!user) return callback('Incorrect username');
 			crypto.pbkdf2(password, user.salt, 10000, 256, 'sha256', function(err, resp) {
 				if(err) return callback('Error handling password');
-				if(resp.toString('base64') !== user.password) return callback('Incorrect password');
-				callback(null);
+				if(hash.toString('base64') !== user.password) return callback('Incorrect password');
+				callback(null, user);
 			});
 		});
 
@@ -113,13 +113,33 @@ function startServer() {
 
 	app.use(bodyParser.json({ limit: '16mb' }));
 	app.use(express.static(path.join(__dirname, 'public')));
-  app.use(session({secret: 'grantisabootyhole'}));
+  app.use(session({secret: 'amandaisabootyhole'}));
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use(new LocalStrategy({usernameField: 'userName', passworldField: 'password'}, authenticateUser));
+  passport.use(LocalStrategy({usernameField: 'userName', passwordField: 'password'}, authenticateUser));
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  })
+
+  passport.deserializeUser(function(id, done) {
+    usermodel.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
 
 	app.post('/login', (req, res, next) => {
+    passport.authenticate('local', function(err, user) {
+      if(err) return res.send({error: err});
+      req.logIn(user, (err) => {
+        if (err) res.send({error: err});
+        res.send({error: null});
+      });
+    });
+  });
+
+
 		var username = req.body.userName;
 		var password = req.body.password;
 		authenticateUser(username, password, (err) => {
