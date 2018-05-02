@@ -129,6 +129,11 @@ function startServer() {
     });
   });
 
+  app.get('/login', (req, res, next) => {
+    var filePath = path.join(__dirname, './login.html');
+    res.sendFile(filePath);
+  });
+
 	app.post('/login', (req, res, next) => {
     passport.authenticate('local', function(err, user) {
       if(err) return res.send({error: err});
@@ -136,13 +141,8 @@ function startServer() {
         if (err) res.send({error: err});
         res.send({error: null});
       });
-    });
+    })(req, res, next);
   });
-  
-	app.get('/login', (req, res, next) => {
-		var filePath = path.join(__dirname, './login.html');
-		res.sendFile(filePath);
-	});
 
 	/* Defines what function to call when a request comes from the path '/' in http://localhost:8080 */
 	app.get('/form', (req, res, next) => {
