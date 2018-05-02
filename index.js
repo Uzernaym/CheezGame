@@ -138,15 +138,7 @@ function startServer() {
       });
     });
   });
-
-
-		var username = req.body.userName;
-		var password = req.body.password;
-		authenticateUser(username, password, (err) => {
-			res.send({error: err});
-		});
-
-	});
+  
 	app.get('/login', (req, res, next) => {
 		var filePath = path.join(__dirname, './login.html');
 		res.sendFile(filePath);
