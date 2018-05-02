@@ -113,7 +113,9 @@ function startServer() {
 
 	app.use(bodyParser.json({ limit: '16mb' }));
 	app.use(express.static(path.join(__dirname, 'public')));
-  app.use(session({secret: 'hola'}));
+
+  app.use(session({ secret: 'hola'}));
+  
   app.use(passport.initialize());
   app.use(passport.session());
 
