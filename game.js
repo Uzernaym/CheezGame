@@ -191,7 +191,7 @@ $(function() {
   // Keyboard events
 
   var enterbutton = document.querySelector('button')
-  /*
+
   enterbutton.addEventListener('click', submit)
 
   function submit() {
@@ -203,7 +203,7 @@ $(function() {
       setUsername();
     }
   }
-  */
+  
 
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
