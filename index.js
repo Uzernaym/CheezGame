@@ -117,7 +117,7 @@ function startServer() {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use(LocalStrategy({usernameField: 'userName', passwordField: 'password'}, authenticateUser));
+  passport.use(new LocalStrategy({usernameField: 'userName', passwordField: 'password'}, authenticateUser));
 
   passport.serializeUser(function(user, done) {
     done(null, user.id);
