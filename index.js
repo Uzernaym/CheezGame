@@ -232,6 +232,7 @@ app.get('/login', (req, res, next) => {
 });
 
 app.get('/game', (req, res, next) => {
+  if(!req.user) res.redirect('/login');
 	/* Get the absolute path of the html file */
 	var filePath = path.join(__dirname, './game.html')
 	/* Sends the html file back to the browser */
