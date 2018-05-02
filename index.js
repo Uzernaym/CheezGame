@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 var usermodel = require('./user.js').getModel();
 var Io = require('socket.io');
 var crypto = require('crypto');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var session = require('express-session');
 
 /* The http module is used to listen for requests from a web browser Confuse */
 var http = require('http');
@@ -25,8 +28,6 @@ var io = Io(server);
 var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezit';
-
-
 
 
 var numUsers = 0;
@@ -112,9 +113,13 @@ function startServer() {
 
 	app.use(bodyParser.json({ limit: '16mb' }));
 	app.use(express.static(path.join(__dirname, 'public')));
+  app.use(session({secret: 'grantisabootyhole'}));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  passport.use(new LocalStrategy({usernameField: 'userName', passworldField: 'password'}, authenticateUser));
 
 	app.post('/login', (req, res, next) => {
-
 		var username = req.body.userName;
 		var password = req.body.password;
 		authenticateUser(username, password, (err) => {

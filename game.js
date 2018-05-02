@@ -28,9 +28,9 @@ $(function() {
   function addParticipantsMessage (data) {
     var message = '';
     if (data.numUsers === 1) {
-      message += "there's 1 participant";
+      message += "There is 1 participant";
     } else {
-      message += "there are " + data.numUsers + " participants";
+      message += "There are " + data.numUsers + " participants";
     }
     log(message);
   }
@@ -271,18 +271,18 @@ $(function() {
   });
 
   socket.on('disconnect', function () {
-    log('you have been disconnected');
+    log('You have been disconnected');
   });
 
   socket.on('reconnect', function () {
-    log('you have been reconnected');
+    log('You have been reconnected');
     if (username) {
       socket.emit('add user', username);
     }
   });
 
   socket.on('reconnect_error', function () {
-    log('attempt to reconnect has failed');
+    log('Attempt to reconnect has failed');
   });
 
 });
