@@ -190,21 +190,6 @@ $(function() {
 
   // Keyboard events
 
-  var enterbutton = document.querySelector('button')
-
-  enterbutton.addEventListener('click', submit)
-
-  function submit() {
-    if (username) {
-      sendMessage();
-      socket.emit('stop typing');
-      typing = false;
-    } else {
-      setUsername();
-    }
-  }
-  
-
   $window.keydown(function (event) {
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
