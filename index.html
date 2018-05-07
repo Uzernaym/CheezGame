@@ -88,6 +88,7 @@
     	if(data.error) {
     		alert(data.error);
     	}
+      window.location.href = "/game"
     }
 
     req.onreadystatechange = readyStateChange;
@@ -119,7 +120,7 @@
     	}
     }
     sendData(data);
-    
+
   }
 
   var $button = document.querySelector('button')
