@@ -233,6 +233,21 @@ app.get('/game', (req, res, next) => {
 		res.send(fileContents);
 	});
 
+app.get('/picture/:username', (req, res, next) => {
+	if(!req.user) return res.send('ERROR');
+	usermodel.findOne({userName: req.params.username}, function(err, user) {
+		if(err) return res.send(err);
+		try {
+			var imageType = user.picture.match(/^data\:image\/([a-zA-Z0-9]*);/)[1];
+			var base64Data = user.picture.split(',')[1];
+			var binaryData = new Buffer(base64Data, 'base64');
+			res.contentType('image/' + imageType);
+			res.end(binaryData, 'binary');
+		} catch(ex) {
+			res.send(ex);
+		}
+	})
+})
 
 /* Defines what function to all when the server recieves any request from http://localhost:8080 */
 server.on('listening', () => {
