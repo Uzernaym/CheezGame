@@ -8,6 +8,7 @@ var crypto = require('crypto');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
+var fs = require('fs');
 
 /* The http module is used to listen for requests from a web browser Confuse */
 var http = require('http');
