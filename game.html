@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confusion</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <ul class="pages">
+    <li class="chat page">
+      <div class="chatArea">
+        <ul class="messages"></ul>
+      </div>
+      <input class="inputMessage" placeholder="Type here..."/>
+			<button>🚀</button>
+    </li>
+    <li class="login page">
+			<div class="form">
+				<h3 class="title">Username</h3>
+				<input class="userName" type="text" maxlength="14" name="userName"/>
+				<h3 class="title">Password</h3>
+				<input class="userName" type="password" name="password">
+				<br><br>
+        <div id='logout'>
+          <a href='/logout'>Log Out</a>
+        </div>
+				<button>🚀</button>
+			</div>
+    	</li>
+  	</ul>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src ='/js/socket.io.js'></script>
+		<script src ='/game.js'></script>
+	</body>
+</html>
