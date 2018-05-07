@@ -191,7 +191,7 @@ function startServer() {
   				return res.send({error: err.message});
   			}
   			res.send({error: null});
-        window.location.href = '/login';
+        
   		});
   	});
   });
