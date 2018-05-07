@@ -191,6 +191,7 @@ function startServer() {
   				return res.send({error: err.message});
   			}
   			res.send({error: null});
+        window.location.href = '/login';
   		});
   	});
   });
@@ -264,7 +265,7 @@ server.on('listening', () => {
 			: 'port ' + addr.port
 	;
 
-	/* Outputs to the console that the webserver is ready to start listenting to requests */
+	/* Outputs to the console that the webserver is ready to start listening to requests */
 	console.log('Listening on ' + bind);
 });
 
