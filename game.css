@@ -1,155 +1,48 @@
-/* Fix user-agent */
-
 * {
-  box-sizing: border-box;
-}
-
-html {
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-}
-
-html, input {
-  font-family:
-    "HelveticaNeue-Light",
-    "Helvetica Neue Light",
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    "Lucida Grande",
-    sans-serif;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
   padding: 0;
-}
-
-ul {
-  list-style: none;
-  word-wrap: break-word;
-}
-
-#logout {
-  position: fixed;
-  top: 1em;
-  right: 1em;
-}
-
-/* Pages */
-
-.pages {
-  height: 100%;
   margin: 0;
-  padding: 0;
-  width: 100%;
 }
-
-.page {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-/* Login Page */
-
-.login.page {
-  background-color: #000;
-}
-
-.login.page .form {
-  height: 100px;
-  margin-top: -100px;
-  position: absolute;
-
-  text-align: center;
-  top: 50%;
-  width: 100%;
-}
-
-.login.page .form .userName {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #fff;
-  outline: none;
-  padding-bottom: 15px;
-  text-align: center;
-  width: 400px;
-}
-
-.login.page .title {
-  font-size: 200%;
-}
-
-.login.page .userName {
-  font-size: 200%;
-  letter-spacing: 3px;
-}
-
-.login.page .title, .login.page .userName {
-  color: #fff;
-  font-weight: 100;
-}
-
-/* Chat page */
-
-.chat.page {
-  display: none;
-}
-
-/* Font */
-
-.messages {
-  font-size: 150%;
-}
-
-.inputMessage {
-  font-size: 100%;
-}
-
-.log {
-  color: gray;
-  font-size: 70%;
-  margin: 5px;
-  text-align: center;
-}
-
-/* Messages */
-
-.chatArea {
-  height: 100%;
-  padding-bottom: 60px;
-}
-
-.messages {
-  height: 100%;
-  margin: 0;
-  overflow-y: scroll;
-  padding: 10px 20px 10px 20px;
-}
-
-.message.typing .messageBody {
-  color: gray;
-}
-
-.username {
-  font-weight: 700;
+body {
   overflow: hidden;
-  padding-right: 15px;
-  text-align: right;
+}
+canvas {
+  background: url('http://wisen.space/capture/load/5-XO21O-HWAmE_51AlMuoX4u.jpg') no-repeat center center fixed;
+  background-size: 100vw 100vh;
 }
 
-/* Input */
+#chat {
+  position:fixed;
+  right: 2vw;
+  bottom: 2vh;
+  width:28vw;
+  height:80vh;
+}
 
-.inputMessage {
-  border: 10px solid #000;
-  bottom: 0;
-  height: 60px;
-  left: 0;
-  outline: none;
-  padding-left: 10px;
-  position: absolute;
-  right: 0;
-  width: 100%;
+#chat button {
+  position:absolute;
+  right:2vw;
+  bottom:2vh;
+  width:1vw;
+  font-size:2vmax;
+  width:1em;
+  height:1em;
+  outline:none;
+  border:none;
+  cursor:pointer;
+  background-color:transparent;
+}
+
+#chat button:hover {
+  font-size:2.2vmax;
+}
+
+#chat input {
+  position:absolute;
+  right:5vw;
+  bottom:1.5vh;
+  width:20vw;
+  font-size:1.5vmax;
+  padding:0.5vmax;
+  color:white;
+  background-color:transparent;
 }
