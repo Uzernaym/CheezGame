@@ -185,7 +185,7 @@ function startServer() {
 
   			// Handling the duplicate key errors from database
   			if(err && err.message.includes('duplicate key error') && err.message.includes('userName')) {
-  				return res.send({error: 'Username, ' + req.body.userName + 'already taken'});
+  				return res.send({error: 'Username, ' + req.body.userName + ' already taken'});
   			}
   			if(err) {
   				return res.send({error: err.message});
