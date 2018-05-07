@@ -30,70 +30,48 @@ var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
 var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezit';
 
 
-var numUsers = 0;
+function addSockets() {
 
-io.on('connection', function (socket) {
-  var addedUser = false;
+	var players = {};
 
-  // when the client emits 'new message', this listens and executes
-  socket.on('new message', function (data) {
-    // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });
-  });
+	io.on('connection', (socket) => {
+		var user = socket.handshake.query.user;
+		if(players[user]) return;
+		players[user] = {
+			x: 0, y: 0
+		}
+		io.emit('newMessage', {user: user, message: 'Entered the game'});
 
-  // when the client emits 'add user', this listens and executes
-  socket.on('add user', function (username) {
-    if (addedUser) return;
+		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
+		io.emit('playerUpdate', players);
 
-    // we store the username in the socket session for this client
-    socket.username = username;
-    ++numUsers;
-    addedUser = true;
-    socket.emit('login', {
-      numUsers: numUsers
-    });
-    // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
-      username: socket.username,
-      numUsers: numUsers
-    });
-  });
+		socket.on('disconnect', () => {
+			delete players[user];
+			io.emit('newMessage', {user: user, message: 'Left game'});
 
-  // when the client emits 'typing', we broadcast it to others
-  socket.on('typing', function () {
-    socket.broadcast.emit('typing', {
-      username: socket.username
-    });
-  });
+			/* UPDATE ALL BROWSERS THAT A PLAYER HAS LEFT THE GAME */
+			io.emit('playerUpdate', players);
+		});
 
-  // when the client emits 'stop typing', we broadcast it to others
-  socket.on('stop typing', function () {
-    socket.broadcast.emit('stop typing', {
-      username: socket.username
-    });
-  });
+		socket.on('message', (message) => {
+			io.emit('newMessage', message);
+		});
 
-  // when the user disconnects.. perform this
-  socket.on('disconnect', function () {
-    if (addedUser) {
-      --numUsers;
+		/* RECIEVED A PLAYER UPDATE FROM A BROWSER */
+		socket.on('playerUpdate', (player) => {
+			players[user] = player;
+			/* UPDATE ALL BROWSERS THAT A PLAYER HAS MOVED */
+			io.emit('playerUpdate', players);
+		});
+	});
 
-      // echo globally that this client has left
-      socket.broadcast.emit('user left', {
-        username: socket.username,
-        numUsers: numUsers
-      });
-    }
-  });
-});
+}
 
 
 
 
 function startServer() {
+  addSockets();
 
 	function authenticateUser(username, password, callback) {
 
@@ -191,7 +169,7 @@ function startServer() {
   				return res.send({error: err.message});
   			}
   			res.send({error: null});
-        
+
   		});
   	});
   });
