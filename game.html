@@ -44,7 +44,7 @@
 				width:20vw;
 				font-size:1.5vmax;
 				padding:0.5vmax;
-				color:white;
+				color:black;
 				background-color: #CC000000;
 			}
 			#chat ul > li {
@@ -75,7 +75,7 @@
 		<script>
 			var user = "{{USERNAME}}";
 			var socket = io({query: {user: user}});
-      
+
 			var $canvas = document.querySelector('canvas');
 			$canvas.width = window.screen.width;
 			$canvas.height = window.screen.height;
