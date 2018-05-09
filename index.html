@@ -35,7 +35,7 @@
     $character.addEventListener('change', grabAvatar);
 
     function grabAvatar() {
-      var fileReader = new fileReader();
+      var fileReader = new FileReader();
       fileReader.onload = function(e) {
         var $img = document.createElement('img');
         imageData = e.target.result;
