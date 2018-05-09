@@ -47,12 +47,12 @@ function addSockets() {
 		socket.on('disconnect', () => {
 			delete players[user];
 			io.emit('newMessage', {user: user, message: 'has left the game'});
+    };
 
 		socket.on('message', (message) => {
 			io.emit('newMessage', {user: user, message});
 		});
-	});
-
+  };
 }
 
 
