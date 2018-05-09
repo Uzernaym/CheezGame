@@ -31,7 +31,7 @@
   <script>
     var imageData;
     var $character = document.querySelector('input[name=avatar]');
-    var $prevImg = document.querySelector('#avatar');
+    var $preview = document.querySelector('#avatar');
     $character.addEventListener('change', grabAvatar);
 
     function grabAvatar() {
@@ -40,8 +40,8 @@
         var $img = document.createElement('img');
         imageData = e.target.result;
         $img.src = imageData;
-        $prevImg.innerHTML = '';
-        $prevImg.appendChild($img);
+        $preview.innerHTML = '';
+        $preview.appendChild($img);
       }
       fileReader.readAsDataURL($character.files[0]);
 
