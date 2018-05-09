@@ -93,7 +93,7 @@
 			socket.on('newMessage', (message) => {
 				var $ul = document.querySelector('#chat ul');
 				var $li = document.createElement('li');
-				$li.innerHTML = `<strong>${message.user}:</strong> ${message.message}`;
+				$li.innerHTML = `<strong>${message.userName}:</strong> ${message.message}`;
 				$ul.appendChild($li);
 			});
 		</script>
