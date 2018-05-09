@@ -21,9 +21,16 @@
 	     <label>Verify Password</label>
 	     <input type='password' name='verifyPassword'>
     </div>
+    <div>
+      <label>Avatar</label>
+      <input type='file' accept='image/*' name='avatar'>
+      <div id='avatar'></div>
+    </div>
     <button>Submit</button>
   </body>
   <script>
+    var imageData;
+    var $character = -
   function verifyPassword() {
 
     var $passwords = document.querySelectorAll('input[type="password"]');
@@ -117,6 +124,9 @@
     		data[$input.name] =  $input.checked;
     	} else if ($input.type === 'radio' && $input.checked || $input.type === 'password') {
     		data[$input.name] = $input.getAttribute('answer');
+        else if($input.type === 'file') {
+          data[$input.type] = imageData;
+        }
     	}
     }
     sendData(data);

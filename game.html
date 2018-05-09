@@ -87,7 +87,7 @@
 				if(e.key !== 'Enter') return;
 				if(document.activeElement.tagName !== 'INPUT' ) return;
 				if($input.value === '') return;
-				socket.emit('message', {user: user, message: $input.value});
+				socket.emit('message', {message: $input.value, user: user});
 				$input.value = '';
 			}
 			socket.on('newMessage', (message) => {
