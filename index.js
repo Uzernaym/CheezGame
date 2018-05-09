@@ -47,7 +47,7 @@ function addSockets() {
 		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
 		io.emit('playerUpdate', players);
 
-		socket.on('disconnect', () => {
+		socket.on('disconnect', (message) => {
 			delete players[user];
 			io.emit('newMessage', {userName: user, message: 'has left the game'});
 
