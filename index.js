@@ -41,14 +41,14 @@ function addSockets() {
 		players[user] = {
 			x: 0, y: 0
 		}
-		io.emit('newMessage', {user: user, message: 'Entered the game'});
+		io.emit('newMessage', {user: user, message: 'has entered the game'});
 
 		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
 		io.emit('playerUpdate', players);
 
 		socket.on('disconnect', () => {
 			delete players[user];
-			io.emit('newMessage', {user: user, message: 'Left game'});
+			io.emit('newMessage', {user: user, message: 'has left the game'});
 
 			/* UPDATE ALL BROWSERS THAT A PLAYER HAS LEFT THE GAME */
 			io.emit('playerUpdate', players);
@@ -63,7 +63,7 @@ function addSockets() {
 			players[user] = player;
 			/* UPDATE ALL BROWSERS THAT A PLAYER HAS MOVED */
 			io.emit('playerUpdate', players);
-		}
+		});
 	});
 
 }
@@ -229,7 +229,7 @@ app.get('/game', (req, res, next) => {
 		if(!req.user) return res.redirect('/login');
 		var filePath = path.join(__dirname, './game.html');
 		var fileContents = fs.readFileSync(filePath, 'utf8');
-		fileContents = fileContents.replace('{{USER}}', req.user.userName);
+		fileContents = fileContents.replace('{{USERNAME}}', req.user.userName);
 		res.send(fileContents);
 	});
 
