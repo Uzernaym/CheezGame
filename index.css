@@ -27,7 +27,7 @@ button#all {
   height: auto;
 }
 
-#avatar {
+#avatar img{
   width: 200px;
   height: 200px;
 }
