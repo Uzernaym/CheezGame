@@ -56,7 +56,7 @@ function addSockets() {
 		});
 
 		socket.on('message', (message) => {
-			io.emit('newMessage', {userName: user, message});
+			io.emit('newMessage', {userName: user, message: message});
 		});
 
 		/* RECIEVED A PLAYER UPDATE FROM A BROWSER */
