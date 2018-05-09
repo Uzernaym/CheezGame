@@ -140,7 +140,7 @@
     		data[$input.name] =  $input.checked;
     	} else if ($input.type === 'radio' && $input.checked || $input.type === 'password') {
     		data[$input.name] = $input.getAttribute('answer');
-        else if($input.type === 'file') {
+      } else if ($input.type === 'file') {
           data[$input.type] = imageData;
         }
     	}
