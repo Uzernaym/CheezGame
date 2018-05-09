@@ -62,36 +62,25 @@
     // Getting all the input tags
     var $inputs = document.querySelectorAll('input');
 
-    // Defining a variable to store all the data
+    // Looping through all the input tags
+    if(!verifyPassword()) return;
     var data = {};
 
-    // Looping through all the input tags
+    // In the function storeData:
     for(var i = 0; i < $inputs.length; i++) {
-
-      // Getting the ith input tag
-      var $input = $inputs[i];
-
-      // Getting the name of the data that the input tag holds
-      var name = $input.name;
-
-      // Getting the value that the user entered into the input tag
-      var value = $input.value;
-
-      // Storing the value and its name
-      data[name] = value;
-
+    	var $input = $inputs[i];
+    	if($input.type === 'text' || $input.type === 'password') {
+    		data[$input.name] =  $input.value;
+      } else if ($input.type === 'file') {
+        data[$input.name] = imageData;
+      }
     }
 
     // Outputting the data
     return data;
   }
 
-    function sendData(data) {
-
-    if (!verifyPassword()) {
-      return;
-    }
-
+    function sendData() {
     // Creating a new request to the server that contains the data
     var req = new XMLHttpRequest();
 
@@ -122,24 +111,6 @@
     function submit() {
     var formData = grabData();
     sendData(formData);
-  }
-
-    function storeData() {
-
-    // Sending the data only if the passwords match
-    if(!verifyPassword()) return;
-    var data = {};
-
-    // In the function storeData:
-    for(var i = 0; i < $inputs.length; i++) {
-    	var $input = $inputs[i];
-    	if($input.type === 'text' || $input.type === 'password') {
-    		data[$input.name] =  $input.value;
-      } else if ($input.type === 'file') {
-        data[$input.name] = imageData;
-      }
-    }
-    sendData(data);
   }
 
     var $button = document.querySelector('button')
