@@ -26,3 +26,8 @@ button#all {
   position: relative;
   height: auto;
 }
+
+#avatar {
+  width: 200px;
+  height: 200px;
+}
