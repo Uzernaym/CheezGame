@@ -30,8 +30,18 @@
   </body>
   <script>
     var imageData;
-    var $character = -
-  function verifyPassword() {
+    var $character = document.querySelector(input[name=avatar]);
+    var $prevImg = document.querySelector('#avatar');
+    $character.addEventListener('change', grabAvatar);
+
+    function grabAvatar() {
+      var fileReader = new fileReader();
+
+      fileReader.readAsDataURL($character.files[0]);
+      
+    }
+
+    function verifyPassword() {
 
     var $passwords = document.querySelectorAll('input[type="password"]');
     var isSamePassword = $passwords[0].value === $passwords[1].value;
@@ -42,7 +52,7 @@
 
   }
 
-  function grabData() {
+    function grabData() {
 
     // Getting all the input tags
     var $inputs = document.querySelectorAll('input');
@@ -71,7 +81,7 @@
     return data;
   }
 
-  function sendData(data) {
+    function sendData(data) {
 
     if (!verifyPassword()) {
       return;
@@ -104,12 +114,12 @@
     req.send(JSON.stringify(data));
   }
 
-  function submit() {
+    function submit() {
     var formData = grabData();
     sendData(formData);
   }
 
-  function storeData() {
+    function storeData() {
 
     // Sending the data only if the passwords match
     if(!verifyPassword()) return;
@@ -133,8 +143,8 @@
 
   }
 
-  var $button = document.querySelector('button')
-  $button.addEventListener('click', submit)
+    var $button = document.querySelector('button')
+    $button.addEventListener('click', submit)
 
 
   </script>
