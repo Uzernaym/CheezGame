@@ -47,7 +47,7 @@ function addSockets() {
 		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
 		io.emit('playerUpdate', players);
 
-		socket.on('disconnect', (message) => {
+		socket.on('disconnect', () => {
 			delete players[user];
 			io.emit('newMessage', {user: user, message: 'has left the game'});
 
@@ -56,7 +56,7 @@ function addSockets() {
 		});
 
 		socket.on('message', (message) => {
-			io.emit('newMessage', {user: user, message: message});
+			io.emit('newMessage', {user: user, message});
 		});
 
 		/* RECIEVED A PLAYER UPDATE FROM A BROWSER */
@@ -230,7 +230,7 @@ app.get('/game', (req, res, next) => {
 		if(!req.user) return res.redirect('/login');
 		var filePath = path.join(__dirname, './game.html');
 		var fileContents = fs.readFileSync(filePath, 'utf8');
-		fileContents = fileContents.replace('{{USER}}', req.user.userName);
+		fileContents = fileContents.replace('{{USERNAME}}', req.user.userName);
 		res.send(fileContents);
 	});
 
