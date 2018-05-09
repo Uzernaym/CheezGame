@@ -81,7 +81,6 @@ function updatePlayerPosition(e) {
 			return;
 	}
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
-
 }
 
 document.body.addEventListener('keydown', updatePlayerPosition);
