@@ -211,11 +211,10 @@ app.get('/index.css', (req, res, next) => {
 	res.sendFile(filePath);
 });
 
-app.get('/game', (req, res, next) => {
-  if(!req.user) return res.redirect('/login');
+app.get('/game.js', (req, res, next) => {
 	/* Get the absolute path of the html file */
-	var filePath = path.join(__dirname, './game.html')
-	/* Sends the html file back to the browser */
+	var filePath = path.join(__dirname, './game.js')
+  /* Sends the html file back to the browser */
 	res.sendFile(filePath);
 });
 
