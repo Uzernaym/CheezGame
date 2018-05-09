@@ -136,16 +136,11 @@
     	var $input = $inputs[i];
     	if($input.type === 'text' || $input.type === 'password') {
     		data[$input.name] =  $input.value;
-    	} else if($input.type === 'checkbox' || $input.type === 'password') {
-    		data[$input.name] =  $input.checked;
-    	} else if ($input.type === 'radio' && $input.checked || $input.type === 'password') {
-    		data[$input.name] = $input.getAttribute('answer');
       } else if ($input.type === 'file') {
-          data[$input.name] = imageData;
+        data[$input.name] = imageData;
       }
     }
     sendData(data);
-
   }
 
     var $button = document.querySelector('button')
