@@ -49,7 +49,7 @@ body :-ms-input-placeholder {
 .container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 200px 0;
+  padding: 50% 0;
   height: 400px;
   text-align: center;
 }
