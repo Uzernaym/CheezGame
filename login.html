@@ -59,7 +59,6 @@ function sendData(data) {
   function readyStateChange() {
     if(req.readyState !== 4) return;
     if(req.status !== 200) return;
-
     data = JSON.parse(req.responseText);
     if(data.error) {
       return alert(data.error);
@@ -71,7 +70,6 @@ function sendData(data) {
 	req.send(JSON.stringify(data));
 }
         function submit() {
-          grabData()
           var formData = grabData();
           sendData(formData);
         }
