@@ -204,8 +204,8 @@ button:hover {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-2000px) rotate(600deg);
-            transform: translateY(-2000px) rotate(600deg);
+    -webkit-transform: translateY(-1600px) rotate(600deg);
+            transform: translateY(-1600px) rotate(600deg);
   }
 }
 @keyframes square {
@@ -214,7 +214,7 @@ button:hover {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-2000px) rotate(600deg);
-            transform: translateY(-2000px) rotate(600deg);
+    -webkit-transform: translateY(-1600px) rotate(600deg);
+            transform: translateY(-1600px) rotate(600deg);
   }
 }
