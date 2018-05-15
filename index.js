@@ -115,6 +115,26 @@ function startServer() {
     res.sendFile(filePath);
   });
 
+	app.get('/login.css', (req, res, next) => {
+    var filePath = path.join(__dirname, './login.css');
+    res.sendFile(filePath);
+  });
+
+	app.get('/vroom', (req, res, next) => {
+    var filePath = path.join(__dirname, './vroom.html');
+    res.sendFile(filePath);
+  });
+
+	app.get('/vroom.css', (req, res, next) => {
+    var filePath = path.join(__dirname, './vroom.css');
+    res.sendFile(filePath);
+  });
+
+	app.get('/vroom.js', (req, res, next) => {
+    var filePath = path.join(__dirname, './vroom.js');
+    res.sendFile(filePath);
+  });
+
   app.get('/logout', (req, res, next) => {
     req.logOut();
     res.redirect('/login');
