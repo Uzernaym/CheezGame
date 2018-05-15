@@ -68,7 +68,7 @@ form {
   position: relative;
   z-index: 2;
 }
-form input {
+input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -86,15 +86,15 @@ form input {
   transition-duration: 0.25s;
   font-weight: 300;
 }
-form input:hover {
+input:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
-form input:focus {
+input:focus {
   background-color: white;
   width: 300px;
   color: #53e3a6;
 }
-form button {
+button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -109,7 +109,7 @@ form button {
   font-size: 18px;
   transition-duration: 0.25s;
 }
-form button:hover {
+button:hover {
   background-color: #f5f7f9;
 }
 .bg-bubbles {
