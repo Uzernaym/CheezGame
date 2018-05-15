@@ -32,11 +32,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Uzernaym/CheezIt.git"
+    "url": "git+https://github.com/Uzernaym/CheezGame.git"
   },
   "bugs": {
-    "url": "https://github.com/Uzernaym/CheezIt/issues"
+    "url": "https://github.com/Uzernaym/CheezGame/issues"
   },
-  "homepage": "https://github.com/Uzernaym/CheezIt#readme",
+  "homepage": "https://github.com/Uzernaym/CheezGame#readme",
   "description": ""
 }
