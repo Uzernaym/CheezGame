@@ -9,7 +9,7 @@
           <h1>Login</h1><br>
           <input class="form" type='text' name='userName' placeholder="Username">
           <input class="form" type='password' name='password' placeholder="Password">
-          <button onclick="submit()" class="button">Login</button>
+          <button id="login-button" class="button">Login</button>
         </div>
         <ul class="bg-bubbles">
           <li></li>
@@ -73,10 +73,10 @@ function sendData(data) {
           var formData = grabData();
           sendData(formData);
         }
-        var $button = document.querySelector('.button')
+        var $button = document.querySelector('#login-button')
         $button.addEventListener('click', submit)
 
-        $(".button").click(function(){
+        $("#login-button").click(function(){
           submit()
         });
 
