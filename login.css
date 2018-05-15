@@ -83,8 +83,9 @@ form{
 	padding: 20px 0;
 	position: relative;
 	z-index: 2;
+}
 
-	input{
+input {
 		display: block;
 		appearance: none;
 		outline: 0;
@@ -113,8 +114,7 @@ form{
 			width: 300px;
 
 			color: @prim;
-		}
-	}
+}
 
 	button{
 		appearance: none;
