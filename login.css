@@ -37,8 +37,8 @@ body :-ms-input-placeholder {
   font-weight: 400;
 }
 .wrapper {
-  background: #1FF0E0;
-  background: linear-gradient(to bottom right, #1FF0E0 0%, #2AE7D8 100%);
+  background: #03A9F4;
+  background: linear-gradient(to bottom right, #03A9F4 0%, #00ffeb 100%)
   position: absolute;
   top: 0;
   left: 0;
@@ -88,7 +88,7 @@ input:hover {
 input:focus {
   background-color: white;
   width: 300px;
-  color: #1FF0E0;
+  color: #03A9F4;
 }
 button {
   -webkit-appearance: none;
@@ -98,7 +98,7 @@ button {
   background-color: white;
   border: 0;
   padding: 10px 15px;
-  color: #1FF0E0;
+  color: #03A9F4;
   border-radius: 3px;
   width: 250px;
   cursor: pointer;
