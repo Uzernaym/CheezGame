@@ -59,7 +59,7 @@ body :-ms-input-placeholder {
   transition-timing-function: ease-in-put;
   font-weight: 200;
 }
-form {
+input {
   padding: 20px 0;
   position: relative;
   z-index: 2;
