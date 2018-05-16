@@ -38,6 +38,7 @@ function updatePlayers(players) {
 }
 
 function drawScore() {
+		console.log(timer);
     context.fillStyle = textColor;
     context.font = timerFont;
     context.fillText(`${parseInt(timer)} Seconds`,timerPosition.x, timerPosition.y);
@@ -72,7 +73,6 @@ function drawPlayers() {
 
 function animate() {
 	timer += 1/60
-	console.log(timer)
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	drawPlayers();
