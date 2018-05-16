@@ -5,7 +5,7 @@ $canvas.width = window.innerWidth;
 $canvas.height = window.innerHeight;
 
 //Scoring Variables
-var score = 0;
+var score = 1;
 var scoreFont = "50px Arial";
 var scorePosition = {x: $canvas.width/2 - 15, y:100};
 var timer = 0;
@@ -74,8 +74,8 @@ function drawPlayers() {
 }
 
 function animate() {
-	setInterval(function(){ score += 1 }, 500);
-	setInterval(function(){ timer += 1; }, 1000);
+	timer += 1/60;
+	score += 1/60;
 	score = Math.max(score, 0);
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
