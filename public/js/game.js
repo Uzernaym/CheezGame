@@ -64,18 +64,20 @@ function animate() {
 function updatePlayerPosition(e) {
 
 	var gamePiece = gamePieces[user];
+	var x.step = 10;
+	var y.step = 10;
 	switch(e.key) {
-		case 'ArrowLeft':
-			gamePiece.x--;
+		case 'A':
+			gamePiece.x -= step;
 			break;
-		case 'ArrowRight':
-			gamePiece.x++;
+		case 'D':
+			gamePiece.x += step;
 			break;
-		case 'ArrowDown':
-			gamePiece.y++;
+		case 'S':
+			gamePiece.y += step;
 			break;
-		case 'ArrowUp':
-			gamePiece.y--;
+		case 'W':
+			gamePiece.y -= step;
 			break;
 		default:
 			return;
