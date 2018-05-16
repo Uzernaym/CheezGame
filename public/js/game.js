@@ -74,8 +74,8 @@ function drawPlayers() {
 }
 
 function animate() {
-	setTimeout(function(){ score++ }, 500);
-	setTimeout(function(){ timer++; }, 1000);
+	setTimeout(function(){ score += 1 }, 500);
+	setTimeout(function(){ timer += 1; }, 1000);
 	score = Math.max(score, 0);
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
