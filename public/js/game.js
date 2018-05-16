@@ -36,7 +36,7 @@ function createNewPlayer(playerName) {
 	gamePiece.avatar.onload = function() {
 		gamePiece.loaded = true;
 	}
-	gamePiece.picture.src = '/picture/' + playerName;
+	gamePiece.avatar.src = '/avatar/' + playerName;
 	gamePieces[playerName] = gamePiece;
 
 }
