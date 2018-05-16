@@ -64,8 +64,8 @@ function animate() {
 function updatePlayerPosition(e) {
 
 	var gamePiece = gamePieces[user];
-	var x.step = 10;
-	var y.step = 10;
+	var xstep = 10;
+	var ystep = 10;
 	switch(e.key) {
 		case 'A':
 			gamePiece.x -= step;
