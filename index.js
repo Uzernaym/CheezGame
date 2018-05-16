@@ -258,7 +258,7 @@ app.get('/game', (req, res, next) => {
 		res.send(fileContents);
 	});
 
-app.get('/picture/:username', (req, res, next) => {
+app.get('/avatar/:username', (req, res, next) => {
 	if(!req.user) return res.send('Not logged in.');
 	usermodel.findOne({userName: req.params.username}, function(err, user) {
 		if(err) return res.send(err);
