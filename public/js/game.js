@@ -2,9 +2,9 @@ var gamePieces = {};
 var context = $canvas.getContext('2d');
 
 socket.on('playerUpdate', updatePlayers);
-	console.log("hi");
-function updatePlayers(players) {
 
+function updatePlayers(players) {
+console.log("hi");
 	var playerNames = Object.keys(players);
 
 	playerNames.forEach(function(playerName) {
