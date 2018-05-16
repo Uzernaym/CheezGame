@@ -41,11 +41,11 @@ function updatePlayers(players) {
 }
 
 function drawScore() {
-		console.log(timer);
     context.fillStyle = textColor;
     context.font = timerFont;
     context.fillText(`${parseInt(timer)} Seconds`,timerPosition.x, timerPosition.y);
 
+		console.log(scoreFont)
     context.font = scoreFont;
     context.fillText(`${parseInt(score)}` ,scorePosition.x, scorePosition.y);
 }
