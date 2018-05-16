@@ -1,6 +1,15 @@
 var gamePieces = {};
 var context = $canvas.getContext('2d');
 
+//Scoring Variables
+var score = 1;
+var scoreFont = "50px Arial";
+var scorePosition = {x: $canvas.width/2 - 15, y:100};
+var timer = 0;
+var timerFont = "20px Arial";
+var timerPosition = {x: 20, y: $canvas.height - 20};
+var textColor = "Black";
+
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
@@ -28,6 +37,14 @@ function updatePlayers(players) {
 
 }
 
+function drawScore() {
+    context.fillStyle = textColor;
+    context.font = timerFont;
+    context.fillText(`${parseInt(timer)} Seconds`,timerPosition.x, timerPosition.y);
+
+    context.font = scoreFont;
+    context.fillText(`${parseInt(score)}` ,scorePosition.x, scorePosition.y);
+}
 
 function createNewPlayer(playerName) {
 
@@ -54,10 +71,12 @@ function drawPlayers() {
 }
 
 function animate() {
+	timer += 1/60
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	drawPlayers();
 	window.requestAnimationFrame(animate);
+	drawScore()
 
 }
 
