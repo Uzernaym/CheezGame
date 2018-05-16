@@ -45,7 +45,6 @@ function drawScore() {
     context.font = timerFont;
     context.fillText(`${parseInt(timer)} Seconds`,timerPosition.x, timerPosition.y);
 
-		console.log(scoreFont)
     context.font = scoreFont;
     context.fillText(`${parseInt(score)}` ,scorePosition.x, scorePosition.y);
 }
@@ -75,7 +74,9 @@ function drawPlayers() {
 }
 
 function animate() {
-	timer += 1/60
+	timer += 1/60;
+	score += 1/60;
+	score = Math.max(score, 0);
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	drawPlayers();
