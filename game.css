@@ -16,7 +16,6 @@ canvas {
   bottom: 2vh;
   width:28vw;
   height:80vh;
-  overflow: auto;
 }
 
 #chat button {
