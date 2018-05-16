@@ -68,16 +68,16 @@ function updatePlayerPosition(e) {
 	var ystep = 10;
 	switch(e.key) {
 		case 'a':
-			gamePiece.x -= step;
+			gamePiece.x -= xstep;
 			break;
 		case 'd':
-			gamePiece.x += step;
+			gamePiece.x += xstep;
 			break;
 		case 's':
-			gamePiece.y += step;
+			gamePiece.y += ystep;
 			break;
 		case 'w':
-			gamePiece.y -= step;
+			gamePiece.y -= ystep;
 			break;
 		default:
 			return;
