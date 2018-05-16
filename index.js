@@ -28,7 +28,7 @@ var io = Io(server);
 /* Defines what port to use to listen to web requests */
 var port =  process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
-var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezit';
+var dbAddress = process.env.MONGODB_URI || 'mongodb://127.0.0.1/cheezgame';
 
 
 function addSockets() {
