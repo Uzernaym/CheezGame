@@ -273,6 +273,9 @@ app.get('/picture/:username', (req, res, next) => {
 			res.send(ex);
 		}
 	})
+	app.get('*', (req, res, next) => {
+		res.redirect('/login');
+	});
 })
 
 /* Defines what function to all when the server recieves any request from http://localhost:8080 */
