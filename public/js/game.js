@@ -75,9 +75,9 @@ function animate() {
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	drawPlayers();
-	window.requestAnimationFrame(animate);
-	drawScore()
 
+	drawScore()
+	window.requestAnimationFrame(animate);
 }
 
 function updatePlayerPosition(e) {
