@@ -32,8 +32,8 @@ console.log("hi");
 function createNewPlayer(playerName) {
 
 	var gamePiece = { loaded: false, x: 0, y:0 };
-	gamePiece.picture = new Image();
-	gamePiece.picture.onload = function() {
+	gamePiece.avatar = new Image();
+	gamePiece.avatar.onload = function() {
 		gamePiece.loaded = true;
 	}
 	gamePiece.picture.src = '/picture/' + playerName;
