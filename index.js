@@ -39,7 +39,7 @@ function addSockets() {
 		var user = socket.handshake.query.user;
 		if(players[user]) return;
 		players[user] = {
-			x: 0, y: 0
+			x: 100, y: 100
 		}
 		io.emit('newMessage', {user: user, message: 'has entered the game'});
 

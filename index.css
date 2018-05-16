@@ -6,6 +6,7 @@ body {
 div {
   font-family: 'Quicksand', sans-serif;
   font-size : 3vw
+  border: solid 1px black;
 }
 
 button#all {
