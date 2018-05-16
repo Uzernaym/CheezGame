@@ -39,19 +39,18 @@ function addSockets() {
 		var user = socket.handshake.query.user;
 		if(players[user]) return;
 		players[user] = {
-			x: 100, y: 100
+			x: 0, y: 0
 		}
+		io.emit('playerUpdate', players);
+
 		io.emit('newMessage', {user: user, message: 'has entered the game'});
 
 		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
-		io.emit('playerUpdate', players);
 
 		socket.on('disconnect', () => {
 			delete players[user];
-			io.emit('newMessage', {user: user, message: 'has left the game'});
-
-			/* UPDATE ALL BROWSERS THAT A PLAYER HAS LEFT THE GAME */
 			io.emit('playerUpdate', players);
+			io.emit('newMessage', {user: user, message: 'has left the game'});
 		});
 
 		socket.on('message', (message) => {
