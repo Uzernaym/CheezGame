@@ -72,6 +72,7 @@ function drawPlayers() {
 
 function animate() {
 	timer += 1/60
+	console.log(timer)
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	drawPlayers();
