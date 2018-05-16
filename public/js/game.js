@@ -4,6 +4,7 @@ var context = $canvas.getContext('2d');
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
+
 	var playerNames = Object.keys(players);
 
 	playerNames.forEach(function(playerName) {
@@ -47,7 +48,7 @@ function drawPlayers() {
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
 		if(!gamePiece.loaded) return;
-		context.drawImage(gamePiece.picture ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
+		context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
 	});
 
 }
@@ -80,6 +81,7 @@ function updatePlayerPosition(e) {
 			return;
 	}
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
+
 }
 
 document.body.addEventListener('keydown', updatePlayerPosition);
