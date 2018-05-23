@@ -145,8 +145,8 @@ function updatePlayerPosition() {
 
 	var gamePiece = gamePieces[user];
 
-	var x = 150;
-  var y = 150;
+	var x = 200;
+  var y = 200;
   var velY = 0;
   var velX = 0;
   var speed = 2;
