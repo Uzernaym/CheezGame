@@ -179,14 +179,14 @@ function updatePlayerPosition() {
     velX *= friction;
     gamePiece.x += velX;
 
-    if (gamePiece.x >= $canvas.width) {
-        gamePiece.x = $canvas.width;
+    if (gamePiece.x >= $canvas.width - 60) {
+        gamePiece.x = $canvas.width - 60;
     } else if (gamePiece.x <= 0) {
         gamePiece.x = 0;
     }
 
-    if (gamePiece.y > $canvas.height) {
-        gamePiece.y = $canvas.height;
+    if (gamePiece.y > $canvas.height - 60) {
+        gamePiece.y = $canvas.height - 60;
     } else if (gamePiece.y <= 0) {
         gamePiece.y = 0;
     }
