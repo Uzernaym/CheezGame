@@ -82,31 +82,6 @@ function createNewPlayer(playerName) {
 
 }
 
-/* function animateBird() {
-    y += ySpeed;
-
-    ySpeed += 0.2;
-
-    if(ySpeed > 10) ySpeed -= 0.2;
-    if(ySpeed <= -20) ySpeed === -20;
-
-    if(y-r < 0)  ySpeed = Math.abs(1.5*ySpeed);
-    if(y+r > $canvas.height)  ySpeed -= Math.abs(1.5*ySpeed);
-}
-
-
-function drawBird() {
-    context.beginPath();
-    context.arc(x, y, r, startAngle, endAngle);
-    rad_grad = context.createRadialGradient(x, y, 1, x, y, 1.25*r);
-    rad_grad.addColorStop(0, 'Yellow');
-    rad_grad.addColorStop(0.9, 'Orange');
-    rad_grad.addColorStop(1, 'Black');
-    context.fillStyle = rad_grad;
-    context.fill();
-}
-*/
-
 function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
@@ -135,9 +110,7 @@ function animate() {
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	updatePlayerPosition();
-	//animateBird()
 
-	//drawBird();
 	drawPlayers();
 
 	drawScore()
