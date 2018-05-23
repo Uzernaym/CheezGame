@@ -4,6 +4,7 @@ var $canvas = document.querySelector('canvas');
 var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
 $canvas.height = window.innerHeight;
+var keys = [];
 
 //Scoring Variables
 var score = 1;
@@ -149,7 +150,7 @@ function updatePlayerPosition(e) {
   var velX = 0;
   var speed = 2;
   var friction = 0.5;
-  var keys = [];
+
 
 			if (keys[38]) {
         if (velY > -speed) {
