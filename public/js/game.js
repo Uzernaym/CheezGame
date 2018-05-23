@@ -105,6 +105,7 @@ function drawPlayers() {
 		var gamePiece = gamePieces[playerName];
 		if(!gamePiece.loaded) return;
 		context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
+		context.fillText(`Dick` ,gamePiece.x, gamePiece.y + 5);
 	});
 
 }
