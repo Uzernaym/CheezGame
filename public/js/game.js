@@ -105,7 +105,7 @@ function drawBird() {
 function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
-	var pieceWidth = Math.min($canvas.width, $canvas.height) / 15;
+	var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
