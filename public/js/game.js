@@ -143,12 +143,12 @@ function updatePlayerPosition(e) {
 
 	var gamePiece = gamePieces[user];
 
-	var x = 150,
-  var y = 150,
-  var velY = 0,
-  var velX = 0,
-  var speed = 2,
-  var friction = 0.5,
+	var x = 150;
+  var y = 150;
+  var velY = 0;
+  var velX = 0;
+  var speed = 2;
+  var friction = 0.5;
   var keys = [];
 
 			if (keys[38]) {
