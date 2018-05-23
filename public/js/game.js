@@ -137,10 +137,11 @@ function animate() {
 	drawPlayers();
 
 	drawScore()
+	updatePlayerPosition();
 	window.requestAnimationFrame(animate);
 }
 
-function updatePlayerPosition(e) {
+function updatePlayerPosition(keys) {
 
 	var gamePiece = gamePieces[user];
 
