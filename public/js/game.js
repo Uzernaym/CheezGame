@@ -145,8 +145,6 @@ function updatePlayerPosition() {
 
 	var gamePiece = gamePieces[user];
 
-	var x = 200;
-  var y = 200;
   var velY = 0;
   var velX = 0;
   var speed = 3;
@@ -180,16 +178,16 @@ function updatePlayerPosition() {
     velX *= friction;
     gamePiece.x += velX;
 
-    if (x >= 295) {
-        x = 295;
-    } else if (x <= 0) {
-        x = 0;
+    if (gamePiece.x >= $canvas.width) {
+        gamePiece.x = $canvas.width;
+    } else if (gamePiece.x <= 0) {
+        gamePiece.x = 0;
     }
 
-    if (y > 295) {
-        y = 295;
-    } else if (y <= 0) {
-        y = 0;
+    if (gamePiece.y > $canvas.width) {
+        gamePiece.y = $canvas.width;
+    } else if (gamePiece.y <= 0) {
+        gamePiece.y = 0;
     }
 
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
