@@ -44,6 +44,7 @@ function addSockets() {
 		io.emit('playerUpdate', players);
 
 		io.emit('newMessage', {user: user, message: 'has entered the game'});
+		console.log('User has entered the game')
 
 		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
 
@@ -51,10 +52,12 @@ function addSockets() {
 			delete players[user];
 			io.emit('playerUpdate', players);
 			io.emit('newMessage', {user: user, message: 'has left the game'});
+			console.log('User has left the game')
 		});
 
 		socket.on('message', (message) => {
 			io.emit('newMessage', message);
+			console.log('Message sent')
 		});
 
 		/* RECIEVED A PLAYER UPDATE FROM A BROWSER */
