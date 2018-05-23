@@ -14,6 +14,7 @@ var timerPosition = {x: 20, y: $canvas.height - 20};
 var textColor = "Black";
 
 //Bird Variables
+/*
 var x = $canvas.width/2;
 var y = $canvas.height/2;
 var r = $canvas.width/40;
@@ -21,6 +22,7 @@ var startAngle = 0;
 var endAngle = 2*Math.PI;
 var step = 1;
 var ySpeed = 0;
+*/
 
 socket.on('playerUpdate', updatePlayers);
 
