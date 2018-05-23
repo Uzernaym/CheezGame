@@ -106,9 +106,11 @@ function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
 	var pieceWidth = Math.min($canvas.width, $canvas.height) / 15;
-	var fontPiece = Math.min(gamePiece.x + pieceWidth) / 2;
+
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
+		var fontPieceX = Math.min(gamePiece.x + pieceWidth) / 2;
+		var fontPieceY = Math.min(gamePiece.y + pieceWidth) / 2;
 		if(!gamePiece.loaded) return;
 		context.fillStyle = playerColor;
 		context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
@@ -116,7 +118,7 @@ function drawPlayers() {
 		context.fillStyle = 'white'
 		context.textAlign = 'center';
 		context.font = playerFont;
-		context.fillText(playerName , fontPiece, fontPiece);
+		context.fillText(playerName , fontPieceX, fontPieceY);
 	});
 
 }
