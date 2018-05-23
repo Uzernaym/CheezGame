@@ -13,6 +13,15 @@ var timerFont = "20px Arial";
 var timerPosition = {x: 20, y: $canvas.height - 20};
 var textColor = "Black";
 
+//Bird Variables
+var x = $canvas.width/2;
+var y = $canvas.height/2;
+var r = $canvas.width/40;
+var startAngle = 0;
+var endAngle = 2*Math.PI;
+var step = 1;
+var ySpeed = 0;
+
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
@@ -61,6 +70,29 @@ function createNewPlayer(playerName) {
 
 }
 
+function animateBird() {
+    y += ySpeed;
+
+    ySpeed += 0.2;
+
+    if(ySpeed > 10) ySpeed -= 1;
+    if(ySpeed <= -20) ySpeed === -20;
+
+    if(y-r < 0)  ySpeed += Math.abs(1.5*ySpeed);
+    if(y+r > $canvas.height)  ySpeed -= Math.abs(1.5*ySpeed);
+}
+
+function drawBird() {
+    context.beginPath();
+    context.arc(x, y, r, startAngle, endAngle);
+    rad_grad = context.createRadialGradient(x, y, 1, x, y, 1.25*r);
+    rad_grad.addColorStop(0, 'Yellow');
+    rad_grad.addColorStop(0.9, 'Orange');
+    rad_grad.addColorStop(1, 'Black');
+    context.fillStyle = rad_grad;
+    context.fill();
+}
+
 function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
@@ -79,10 +111,17 @@ function animate() {
 	score = Math.max(score, 0);
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
-	drawPlayers();
+
+	animateBird()
+
+	drawBird();
 
 	drawScore()
 	window.requestAnimationFrame(animate);
+}
+
+function interact(e) {
+
 }
 
 function updatePlayerPosition(e) {
@@ -101,7 +140,8 @@ function updatePlayerPosition(e) {
 			gamePiece.y += ystep;
 			break;
 		case 'w':
-			gamePiece.y -= ystep;
+			//gamePiece.y -= ystep;
+			ySpeed -= Math.abs(ySpeed += 5);
 			break;
 		default:
 			return;
