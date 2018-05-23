@@ -25,6 +25,10 @@ var step = 1;
 var ySpeed = 0;
 */
 
+//Random Color
+var colors = ['red', 'green', 'blue', 'orange', 'yellow'];
+var playerColor = colors[Math.floor(Math.random() * colors.length)];
+
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
@@ -105,9 +109,11 @@ function drawPlayers() {
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
 		if(!gamePiece.loaded) return;
-		context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
+		context.fillStyle = playerColor;
+		context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
+		//context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
 		context.font = playerFont;
-		context.fillText(playerName ,gamePiece.x, gamePiece.y + 5);
+		context.fillText(playerName ,gamePiece.x, gamePiece.y);
 	});
 
 }
