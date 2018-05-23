@@ -5,6 +5,10 @@ var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
 $canvas.height = window.innerHeight;
 var keys = [];
+var velY = 0;
+var velX = 0;
+var speed = 5;
+var friction = 0.98;
 
 //Scoring Variables
 var score = 1;
@@ -145,10 +149,7 @@ function updatePlayerPosition() {
 
 	var gamePiece = gamePieces[user];
 
-  var velY = 0;
-  var velX = 0;
-  var speed = 5;
-  var friction = 0.98;
+
 
 
 			if (keys[38]) {
@@ -189,7 +190,6 @@ function updatePlayerPosition() {
     } else if (gamePiece.y <= 0) {
         gamePiece.y = 0;
     }
-		console.log(velX)
 
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
 
