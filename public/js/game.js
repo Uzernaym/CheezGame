@@ -189,6 +189,7 @@ function updatePlayerPosition() {
     } else if (gamePiece.y <= 0) {
         gamePiece.y = 0;
     }
+		console.log(velX)
 
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
 
