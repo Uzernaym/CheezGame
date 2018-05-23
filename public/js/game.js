@@ -11,7 +11,7 @@ var scoreFont = "50px Arial";
 var scorePosition = {x: $canvas.width/2 - 15, y:100};
 var timer = 0;
 var timerFont = "20px Arial";
-var timerPosition = {x: 20, y: $canvas.height - 20};
+var timerPosition = {x: 40, y: $canvas.height - 20};
 var textColor = "Black";
 
 //Bird Variables
@@ -26,7 +26,7 @@ var ySpeed = 0;
 */
 
 //Random Color
-var colors = ['red', 'green', 'blue', 'orange', 'yellow'];
+var colors = ['red', 'green', 'blue', 'orange'];
 var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
