@@ -147,8 +147,8 @@ function updatePlayerPosition() {
 
   var velY = 0;
   var velX = 0;
-  var speed = 3;
-  var friction = 0.8;
+  var speed = 5;
+  var friction = 0.95;
 
 
 			if (keys[38]) {
