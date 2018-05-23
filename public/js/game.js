@@ -130,14 +130,14 @@ function animate() {
 	score = Math.max(score, 0);
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
-
+	updatePlayerPosition();
 	//animateBird()
 
 	//drawBird();
 	drawPlayers();
 
 	drawScore()
-	updatePlayerPosition();
+
 	window.requestAnimationFrame(animate);
 }
 
