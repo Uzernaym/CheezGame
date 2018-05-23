@@ -137,7 +137,7 @@ function updatePlayerPosition(e) {
 			gamePiece.y += ystep;
 			break;
 		case 'w':
-			//gamePiece.y -= ystep;
+			gamePiece.y -= ystep;
 			ySpeed -= Math.abs(ySpeed += 5);
 			break;
 		default:
