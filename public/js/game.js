@@ -190,9 +190,6 @@ function updatePlayerPosition(e) {
         y = 0;
     }
 
-
-
-	}
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
 
 }
