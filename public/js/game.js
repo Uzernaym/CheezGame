@@ -72,7 +72,7 @@ function createNewPlayer(playerName) {
 
 }
 
-function animateBird() {
+/* function animateBird() {
     y += ySpeed;
 
     ySpeed += 0.2;
@@ -84,6 +84,7 @@ function animateBird() {
     if(y+r > $canvas.height)  ySpeed -= Math.abs(1.5*ySpeed);
 }
 
+
 function drawBird() {
     context.beginPath();
     context.arc(x, y, r, startAngle, endAngle);
@@ -94,6 +95,7 @@ function drawBird() {
     context.fillStyle = rad_grad;
     context.fill();
 }
+*/
 
 function drawPlayers() {
 
@@ -140,7 +142,7 @@ function updatePlayerPosition(e) {
 			break;
 		case 'w':
 			gamePiece.y -= ystep;
-			ySpeed -= Math.abs(ySpeed += 5);
+			//ySpeed -= Math.abs(ySpeed += 5);
 			break;
 		default:
 			return;
