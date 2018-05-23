@@ -142,29 +142,67 @@ function animate() {
 function updatePlayerPosition(e) {
 
 	var gamePiece = gamePieces[user];
-	var xstep = 10;
-	var ystep = 10;
-	switch(e.key) {
-		case 'a':
-			gamePiece.x -= xstep;
-			break;
-		case 'd':
-			gamePiece.x += xstep;
-			break;
-		case 's':
-			gamePiece.y += ystep;
-			break;
-		case 'w':
-			gamePiece.y -= ystep;
-			//ySpeed -= Math.abs(ySpeed += 5);
-			break;
-		default:
-			return;
+
+	var x = 150,
+  var y = 150,
+  var velY = 0,
+  var velX = 0,
+  var speed = 2,
+  var friction = 0.5,
+  var keys = [];
+
+			if (keys[38]) {
+        if (velY > -speed) {
+            velY--;
+        }
+    }
+
+    if (keys[40]) {
+        if (velY < speed) {
+            velY++;
+        }
+    }
+    if (keys[39]) {
+        if (velX < speed) {
+            velX++;
+        }
+    }
+    if (keys[37]) {
+        if (velX > -speed) {
+            velX--;
+        }
+    }
+
+    velY *= friction;
+    gamePiece.y += velY;
+    velX *= friction;
+    gamePiece.x += velX;
+
+    if (x >= 295) {
+        x = 295;
+    } else if (x <= 0) {
+        x = 0;
+    }
+
+    if (y > 295) {
+        y = 295;
+    } else if (y <= 0) {
+        y = 0;
+    }
+
+
+
 	}
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
 
 }
 
-document.body.addEventListener('keydown', updatePlayerPosition);
+document.body.addEventListener("keydown", function (e) {
+    keys[e.keyCode] = true;
+});
+document.body.addEventListener("keyup", function (e) {
+    keys[e.keyCode] = false;
+});
+
 window.requestAnimationFrame(animate);
 createNewPlayer(user);
