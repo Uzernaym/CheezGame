@@ -149,7 +149,7 @@ function updatePlayerPosition() {
   var y = 200;
   var velY = 0;
   var velX = 0;
-  var speed = 2;
+  var speed = 3;
   var friction = 0.8;
 
 
