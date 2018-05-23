@@ -141,7 +141,7 @@ function animate() {
 	window.requestAnimationFrame(animate);
 }
 
-function updatePlayerPosition(keys) {
+function updatePlayerPosition() {
 
 	var gamePiece = gamePieces[user];
 
