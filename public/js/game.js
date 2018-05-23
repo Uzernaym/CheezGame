@@ -109,8 +109,8 @@ function drawPlayers() {
 
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
-		var fontPieceX = Math.min(gamePiece.x + pieceWidth) / 2;
-		var fontPieceY = Math.min(gamePiece.y + pieceWidth) / 2;
+		var fontPieceX = gamePiece.x + pieceWidth/2;
+		var fontPieceY = gamePiece.y + pieceWidth/2;
 		if(!gamePiece.loaded) return;
 		context.fillStyle = playerColor;
 		context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
