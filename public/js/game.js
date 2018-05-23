@@ -185,8 +185,8 @@ function updatePlayerPosition() {
         gamePiece.x = 0;
     }
 
-    if (gamePiece.y > $canvas.width) {
-        gamePiece.y = $canvas.width;
+    if (gamePiece.y > $canvas.height) {
+        gamePiece.y = $canvas.height;
     } else if (gamePiece.y <= 0) {
         gamePiece.y = 0;
     }
