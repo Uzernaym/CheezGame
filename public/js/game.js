@@ -75,10 +75,10 @@ function animateBird() {
 
     ySpeed += 0.2;
 
-    if(ySpeed > 10) ySpeed -= 1;
+    if(ySpeed > 10) ySpeed -= 0.2;
     if(ySpeed <= -20) ySpeed === -20;
 
-    if(y-r < 0)  ySpeed += Math.abs(1.5*ySpeed);
+    if(y-r < 0)  ySpeed = Math.abs(1.5*ySpeed);
     if(y+r > $canvas.height)  ySpeed -= Math.abs(1.5*ySpeed);
 }
 
@@ -114,14 +114,11 @@ function animate() {
 
 	animateBird()
 
-	drawBird();
+	//drawBird();
+	drawPlayers();
 
 	drawScore()
 	window.requestAnimationFrame(animate);
-}
-
-function interact(e) {
-
 }
 
 function updatePlayerPosition(e) {
