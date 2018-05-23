@@ -1,4 +1,5 @@
 var gamePieces = {};
+var playerFont = "10px Arial";
 var $canvas = document.querySelector('canvas');
 var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
@@ -105,6 +106,7 @@ function drawPlayers() {
 		var gamePiece = gamePieces[playerName];
 		if(!gamePiece.loaded) return;
 		context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
+		context.font = playerFont
 		context.fillText(playerName ,gamePiece.x, gamePiece.y + 5);
 	});
 
