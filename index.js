@@ -10,7 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 var fs = require('fs');
 
-/* The http module is used to listen for requests from a web browser Confuse */
+/* The http module is used to listen for requests from a web browser */
 var http = require('http');
 
 /* The path module is used to transform relative paths to absolute paths */
@@ -41,6 +41,7 @@ function addSockets() {
 		players[user] = {
 			x: 0, y: 0
 		}
+
 		io.emit('playerUpdate', players);
 
 		io.emit('newMessage', {user: user, message: 'has entered the game'});
@@ -48,11 +49,11 @@ function addSockets() {
 
 		/* UPDATE ALL BROWSERS THAT A NEW PLAYER HAS JOINED */
 
-		socket.on('disconnect', () => {
+		socket.on('disconnect', (io) => {
 			delete players[user];
 			io.emit('playerUpdate', players);
 			io.emit('newMessage', {user: user, message: 'has left the game'});
-			console.log('User has left the game')
+				console.log('User has left the game')
 		});
 
 		socket.on('message', (message) => {
