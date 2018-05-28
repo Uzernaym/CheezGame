@@ -17,7 +17,7 @@ var scorePosition = {x: $canvas.width/2 - 15, y:100};
 var timer = 0;
 var timerFont = "20px Arial";
 var timerPosition = {x: 60, y: $canvas.height - 20};
-var textColor = "Black";
+var textColor = "White";
 
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
