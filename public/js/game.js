@@ -21,7 +21,7 @@ var textColor = "Black";
 
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
-var playerColor;
+var playerColor = colors[playerNames.length % 4];
 //var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
