@@ -8,7 +8,7 @@ var keys = [];
 var velY = 0;
 var velX = 0;
 var speed = 5;
-var friction = 0.9;
+var friction = 0.98;
 
 //Scoring Variables
 var score = 1;
@@ -21,15 +21,14 @@ var textColor = "Black";
 
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
-var playerColor = colors[Math.floor(Math.random() * colors.length)];
-
+//var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
 
 	var playerNames = Object.keys(players);
-	var playerColor2 = colors[playerNames.length % 4]
+	var playerColor = colors[playerNames.length % 4]
 
 	playerNames.forEach(function(playerName) {
 		if(playerName === user) return;
