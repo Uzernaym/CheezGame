@@ -21,14 +21,14 @@ var textColor = "White";
 
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
-//var playerColor = colors[Math.floor(Math.random() * colors.length)];
+var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
 
 	var playerNames = Object.keys(players);
-	var playerColor = colors[playerNames.length % 4];
+	//var playerColor = colors[playerNames.length % 4];
 
 	playerNames.forEach(function(playerName) {
 		if(playerName === user) return;
@@ -75,7 +75,7 @@ function createNewPlayer(playerName) {
 function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
-	var playerColor = colors[playerNames.length % 4];
+	//var playerColor = colors[playerNames.length % 4];
 	var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 
 	playerNames.forEach(function(playerName) {
