@@ -89,7 +89,7 @@ function drawPlayers() {
 		context.fillStyle = 'white'
 		context.textAlign = 'center';
 		context.font = playerFont;
-		context.fillText(playerName , fontPieceX, fontPieceY);
+		context.fillText(playerName , fontPieceX, fontPieceY + 2);
 	});
 
 }
