@@ -22,13 +22,14 @@ var textColor = "Black";
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
 var playerColor = colors[Math.floor(Math.random() * colors.length)];
-var playerColor2 = colors[playerName.length % 4]
+
 
 socket.on('playerUpdate', updatePlayers);
 
 function updatePlayers(players) {
 
 	var playerNames = Object.keys(players);
+	var playerColor2 = colors[playerName.length % 4]
 
 	playerNames.forEach(function(playerName) {
 		if(playerName === user) return;
