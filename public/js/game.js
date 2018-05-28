@@ -8,7 +8,7 @@ var keys = [];
 var velY = 0;
 var velX = 0;
 var speed = 5;
-var friction = 0.98;
+var friction = 0.9;
 
 //Scoring Variables
 var score = 1;
@@ -19,20 +19,10 @@ var timerFont = "20px Arial";
 var timerPosition = {x: 60, y: $canvas.height - 20};
 var textColor = "Black";
 
-//Bird Variables
-/*
-var x = $canvas.width/2;
-var y = $canvas.height/2;
-var r = $canvas.width/40;
-var startAngle = 0;
-var endAngle = 2*Math.PI;
-var step = 1;
-var ySpeed = 0;
-*/
-
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
 var playerColor = colors[Math.floor(Math.random() * colors.length)];
+var playerColor2 = colors[playerName.length % 4]
 
 socket.on('playerUpdate', updatePlayers);
 
@@ -121,9 +111,6 @@ function animate() {
 function updatePlayerPosition() {
 
 	var gamePiece = gamePieces[user];
-
-
-
 
 			if (keys[38]) {
         if (velY > -speed) {
