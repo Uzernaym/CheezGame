@@ -84,7 +84,8 @@ function drawPlayers() {
 		var fontPieceY = gamePiece.y + pieceWidth/2;
 		if(!gamePiece.loaded) return;
 		context.fillStyle = playerColor;
-		context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
+		context.arc(gamePiece.x, gamePiece.y, pieceWidth, 0, 2 * Math.PI, false)
+		//context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
 		//context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
 		context.fillStyle = 'white'
 		context.textAlign = 'center';
