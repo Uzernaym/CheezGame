@@ -29,7 +29,7 @@ socket.on('playerUpdate', updatePlayers);
 function updatePlayers(players) {
 
 	var playerNames = Object.keys(players);
-	var playerColor2 = colors[playerName.length % 4]
+	var playerColor2 = colors[playerNames.length % 4]
 
 	playerNames.forEach(function(playerName) {
 		if(playerName === user) return;
