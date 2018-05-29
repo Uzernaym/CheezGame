@@ -57,12 +57,6 @@ function drawObjects() {
 function animateObjects() {
 }
 
-function checkCollisions() {
-	if gamePiece.x + pieceWidth
-		console.log('big die')
-	if
-}
-
 
 
 
