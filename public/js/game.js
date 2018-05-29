@@ -11,7 +11,9 @@ var speed = 5;
 var friction = 0.98;
 var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 
-//World Variables
+//World and Viewport Variables
+
+//Object Variables
 
 //Scoring Variables
 var score = 1;
@@ -33,6 +35,10 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 
 socket.on('playerUpdate', updatePlayers);
+
+fucntion drawObjects() {
+
+}
 
 function resizeCanvas() {
 	$canvas.width = window.innerWidth;
@@ -136,6 +142,8 @@ function animate() {
 	updatePlayerPosition();
 
 	drawPlayers();
+
+	drawObjects();
 
 	drawScore();
 
