@@ -172,17 +172,17 @@ function ballCollision() {
     }
 }
 
-/* function playerCollision() {
+function playerCollision() {
 	for (var obj1 in objArray) {
 		for (var obj2 in objArray) {
-			for (gamePiece) {
+			for (var gamePiece) {
 				if (obj1 !== obj2 && distanceNextFrame(gamePiece, objArray[obj2]) <= 0) {
 					console.log('hi');
 				}
 			}
 		}
 	}
-} */
+}
 
 function staticCollision() {
     for (var obj1 in objArray) {
@@ -383,7 +383,7 @@ function drawPlayers() {
 		context.font = playerFont;
 		context.fillText(playerName , fontPieceX, fontPieceY);
 		context.font = playerScoreFont;
-		context.fillText(Math.round(score), fontPieceX, fontPieceY - 5);
+		context.fillText(Math.round(score), fontPieceX, fontPieceY - 15);
 	});
 
 }
@@ -424,7 +424,7 @@ function animate() {
 		staticCollision();
 		ballCollision();
 
-		//playerCollision();
+		playerCollision();
 
 	window.requestAnimationFrame(animate);
 }
