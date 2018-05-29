@@ -172,6 +172,14 @@ function staticCollision() {
     }
 }
 
+function applyGravity() {
+    for (var obj in objArray) {
+        if (objArray[obj].onGround() == false) {
+            objArray[obj].dy += 0.29;
+        }
+    }
+}
+
 function moveObjects() {
     for (var obj in objArray) {
         objArray[obj].x += objArray[obj].dx;
@@ -433,7 +441,7 @@ function updatePlayerPosition() {
 		if (keys[67]) { // c
         objArray[objArray.length] = new Ball(randomX(), randomY(), randomRadius());
 		}
-		
+
 		function arrowControls() {
     if (leftHeld) { // left arrow
         for (var obj in objArray) {
