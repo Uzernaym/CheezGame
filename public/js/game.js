@@ -4,8 +4,8 @@ var $canvas = document.querySelector('canvas');
 var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
 $canvas.height = window.innerHeight;
-var randomX = Math.floor((Math.random() * $canvas.width) + 1);
-var randomY = Math.floor((Math.random() * $canvas.height) + 1);
+//var randomX = Math.floor((Math.random() * $canvas.width) + 1);
+//var randomY = Math.floor((Math.random() * $canvas.height) + 1);
 var keys = [];
 var velY = 0;
 var velX = 0;
@@ -43,7 +43,7 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
-function drawObjects() {
+/*function drawObjects() {
 	//objects.forEach(function(object) {
 		var randomSize = Math.floor(Math.random() * objectsSize);
 		context.beginPath();
@@ -55,7 +55,7 @@ function drawObjects() {
 }
 
 function animateObjects() {
-}
+} */
 
 
 
@@ -200,7 +200,36 @@ for (i = 0; i<7; i++) {
     objArray[objArray.length] = temp;
 }
 
+function randomX() {
+    x = Math.floor(Math.random() * canvas.width);
+    if (x < 30) {
+        x = 30;
+    } else if (x + 30 > canvas.width) {
+        x = canvas.width - 30;
+    }
+    return x;
+}
 
+function randomY() {
+    y = Math.floor(Math.random() * canvas.height);
+    if (y < 30) {
+        y = 30;
+    } else if (y + 30 > canvas.height) {
+        y = canvas.height - 30;
+    }
+    return y;
+}
+
+function randomRadius() {
+    if (bigBalls) {
+        r = Math.ceil(Math.random() * 10 + 13);
+        return r;
+    } else {
+        r = Math.ceil(Math.random() * 2 + 1);
+        //r = 2;
+        return r;
+    }
+}
 
 
 
