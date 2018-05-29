@@ -30,16 +30,6 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
-function updatePowahs() {
-	if (bigboomcooldown === true) {
-		console.log('BIGBOOM');
-		//setTimeout(resetPowahs(), 5000);
-}
-
-function resetPowahs() {
-	var bigboomcooldown = false;
-}
-
 function updatePlayers(players) {
 
 	var playerNames = Object.keys(players);
@@ -75,6 +65,16 @@ function drawScore() {
     context.fillText(`${parseInt(score)}` ,scorePosition.x, scorePosition.y);
 }
 
+function updatePowahs() {
+	if (bigboomcooldown === true) {
+		console.log('BIGBOOM');
+		//setTimeout(resetPowahs(), 5000);
+}
+
+function resetPowahs() {
+	var bigboomcooldown = false;
+}
+
 function createNewPlayer(playerName) {
 	var randomX = Math.floor((Math.random() * $canvas.width) + 1);
 	var randomY = Math.floor((Math.random() * $canvas.height) + 1);
@@ -85,7 +85,6 @@ function createNewPlayer(playerName) {
 	}
 	gamePiece.avatar.src = '/avatar/' + playerName;
 	gamePieces[playerName] = gamePiece;
-
 }
 
 function drawPlayers() {
@@ -176,7 +175,6 @@ function updatePlayerPosition() {
     }
 
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
-
 }
 
 document.body.addEventListener("keydown", function (e) {
