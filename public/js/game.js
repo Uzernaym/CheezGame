@@ -11,6 +11,8 @@ var speed = 5;
 var friction = 0.98;
 var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 
+//World Variables
+
 //Scoring Variables
 var score = 1;
 var scoreFont = "50px Arial";
@@ -28,7 +30,14 @@ var bigboomcooldowntime = 5000;
 var colors = ['red', 'green', 'blue', 'orange'];
 var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
+
+
 socket.on('playerUpdate', updatePlayers);
+
+function resizeCanvas() {
+	$canvas.width = window.innerWidth;
+	$canvas.height = window.innerHeight;
+}
 
 function updatePlayers(players) {
 
@@ -190,6 +199,7 @@ document.body.addEventListener("keydown", function (e) {
 document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
 });
+window.addEventListener("resize", resizeCanvas);
 
 window.requestAnimationFrame(animate);
 createNewPlayer(user);
