@@ -293,7 +293,7 @@ function distanceNextFrame(a, b) {
     return Math.sqrt((a.x + a.dx - b.x - b.dx)**2 + (a.y + a.dy - b.y - b.dy)**2) - a.radius - b.radius;
 }
 
-function distanceNextFrame2(a, b, fontPieceX, fontPieceY) {
+function distanceNextFrame2(a, b, fontPieceX, fontPieceY, dx1f, dy1f, pieceWidth) {
 	return Math.sqrt((fontPieceX + dx1F - b.x - b.dx)**2 + (fontPieceY + dy1F - b.y - b.dy)**2) - pieceWidth - b.radius;
 }
 
