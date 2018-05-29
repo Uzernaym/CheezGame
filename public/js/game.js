@@ -42,7 +42,7 @@ socket.on('playerUpdate', updatePlayers);
 
 function drawObjects() {
 	//objects.forEach(function(object) {
-		var randomSize = Math.floor(Math.random() * objectsSize;
+		var randomSize = Math.floor(Math.random() * objectsSize);
 		context.beginPath();
 		context.fillStyle = playerColor;
 		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false);
@@ -50,6 +50,10 @@ function drawObjects() {
 		context.drawImage(objectSprite ,  randomY, randomX, randomSize, randomSize;
 		context.fill();
 	//})
+}
+
+function animateObjects() {
+	console.log('big die')
 }
 
 function resizeCanvas() {
@@ -157,6 +161,8 @@ function animate() {
 	drawPlayers();
 
 	drawObjects();
+
+	animateObjects();
 
 	drawScore();
 
