@@ -87,6 +87,7 @@ function drawPlayers() {
 		context.arc(gamePiece.x, gamePiece.y, pieceWidth, 0, 2 * Math.PI, false)
 		//context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
 		//context.drawImage(gamePiece.avatar ,gamePiece.x, gamePiece.y, pieceWidth, pieceWidth);
+		context.fill()
 		context.fillStyle = 'white'
 		context.textAlign = 'center';
 		context.font = playerFont;
