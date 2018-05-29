@@ -54,7 +54,7 @@ function drawObjects() {
 }
 
 function animateObjects() {
-
+}
 
 function resizeCanvas() {
 	$canvas.width = window.innerWidth;
