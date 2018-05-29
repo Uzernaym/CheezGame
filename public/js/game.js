@@ -169,6 +169,7 @@ function ballCollision() {
             }
         }
         wallCollision(objArray[obj1]);
+				playerCollision(gamePiece);
     }
 }
 
@@ -422,7 +423,7 @@ function animate() {
 		staticCollision();
 		ballCollision();
 
-		playerCollision();
+
 
 	window.requestAnimationFrame(animate);
 }
