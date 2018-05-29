@@ -21,7 +21,7 @@ var timerPosition = {x: 60, y: $canvas.height - 20};
 var textColor = "White";
 
 //Powahs
-var bigboomcooldown = false;
+var bigboomcooldown = 0.5;
 var bigboomcooldowntime = 5000;
 
 //Random Color
@@ -66,14 +66,15 @@ function drawScore() {
 }
 
 function updatePowahs() {
-	if (bigboomcooldown === true) {
+	if (bigboomcooldown === 1) {
+		bigboomcooldown = 0;
 		console.log('BIGBOOM');
 		setTimeout(resetPowahs, 5000);
 	}
 }
 
 function resetPowahs() {
-	bigboomcooldown = false;
+	bigboomcooldown = 0.5;
 	console.log('what the FUCK');
 }
 
@@ -155,8 +156,8 @@ function updatePlayerPosition() {
         }
     }
 		if (keys[32]) {
-			if (bigboomcooldown === false)
-			bigboomcooldown = true;
+			if (bigboomcooldown === 0.5)
+			bigboomcooldown = 1;
 		}
 
     velY *= friction;
