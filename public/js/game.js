@@ -47,7 +47,7 @@ function drawObjects() {
 		context.fillStyle = playerColor;
 		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false);
 		context.fill();
-		context.drawImage(objectSprite ,  randomY, randomX, randomSize, randomSize;
+		context.drawImage(objectSprite ,  randomY, randomX, randomSize, randomSize);
 		context.fill();
 	//})
 }
