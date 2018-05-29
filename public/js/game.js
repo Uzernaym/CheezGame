@@ -13,6 +13,9 @@ var speed = 5;
 var friction = 0.98;
 var pieceWidth = 15;
 
+
+var bigBalls = true;
+
 //World and Viewport Variables
 
 //Object Variables
