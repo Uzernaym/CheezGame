@@ -216,7 +216,8 @@ function drawObjects() {
 }
 
 for (i = 0; i<12; i++) {
-    var temp = new Ball(randomX(), randomY(), randomRadius());
+    var temp = new Ball(randomX(), randomY(), randomRadius(), 15);
+    objArray[objArray.length] = temp;
 }
 
 function randomX() {
