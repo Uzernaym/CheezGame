@@ -11,7 +11,7 @@ var keys = [];
 var velY = 0;
 var velX = 0;
 var speed = 5;
-var friction = 0.98;
+var friction = 0.9;
 var pieceWidth = 15;
 
 
@@ -378,7 +378,7 @@ function drawPlayers() {
 		context.font = playerFont;
 		context.fillText(playerName , fontPieceX, fontPieceY);
 		context.font = playerScoreFont;
-		context.fillText(score, fontPieceX, fontPieceY + 5);
+		context.fillText(Math.round(score), fontPieceX, fontPieceY - 5);
 	});
 
 }
@@ -477,11 +477,10 @@ function updatePlayerPosition() {
         }
     }
 
-
-    velY *= friction;
-    gamePiece.y += velY;
     velX *= friction;
     gamePiece.x += velX;
+		velY *= friction;
+    gamePiece.y += velY;
 
     if (gamePiece.x + pieceWidth >= $canvas.width) {
         gamePiece.x = $canvas.width - pieceWidth;
