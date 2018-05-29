@@ -173,9 +173,11 @@ function ballCollision() {
 }
 
 function playerCollision() {
-	for (var obj2 in objArray) {
-		if (obj1 !== obj2 && distanceNextFrame(gamePiece, objArray[obj2]) <= 0) {
-			console.log('hi');
+	for (var obj1 in objArray) {
+		for (var obj2 in objArray) {
+			if (obj1 !== obj2 && distanceNextFrame(gamePiece, objArray[obj2]) <= 0) {
+				console.log('hi');
+			}
 		}
 	}
 }
