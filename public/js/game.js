@@ -15,7 +15,7 @@ var pieceWidth = 15;
 
 //Object Variables
 var objectSprite = new Image();
-imageObj.src = 'https://orig00.deviantart.net/10d0/f/2010/311/f/0/rock_planet_sprite_by_fidgetwidget-d32erpc.png';
+objectSprite.src = 'https://orig00.deviantart.net/10d0/f/2010/311/f/0/rock_planet_sprite_by_fidgetwidget-d32erpc.png';
 var objectsSize = [3, 5, 10];
 var objectSpeed = [0.1, 0.5, 1, 1.5, 2.5, 3]
 var objects = [];
