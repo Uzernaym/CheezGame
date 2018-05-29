@@ -201,7 +201,7 @@ for (i = 0; i<7; i++) {
 }
 
 function randomX() {
-    x = Math.floor(Math.random() * canvas.width);
+    x = Math.floor(Math.random() * $canvas.width);
     if (x < 30) {
         x = 30;
     } else if (x + 30 > $canvas.width) {
