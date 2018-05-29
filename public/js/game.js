@@ -19,6 +19,12 @@ var leftHeld = false;
 var upHeld = false;
 var rightHeld = false;
 var downHeld = false;
+var gravityOn = false;
+var objArray = [];
+var paused = false;
+var totalKineticEnergy = 0;
+var bumped = false;
+
 
 //World and Viewport Variables
 
@@ -27,7 +33,6 @@ var objectSprite = document.getElementById("objectSprite");
 var objectsSize = [3, 5, 10];
 var objectSpeed = [0.1, 0.5, 1, 1.5, 2.5, 3]
 var objects = [];
-var objArray = [];
 
 //Scoring Variables
 var score = 1;
@@ -151,9 +156,6 @@ function ballCollision() {
                 objArray[obj1].dy = dy1F;
                 objArray[obj2].dx = dx2F;
                 objArray[obj2].dy = dy2F;
-
-                if (soundOn)
-                    beep.play();
             }
         }
         wallCollision(objArray[obj1]);
@@ -184,6 +186,13 @@ function applyGravity() {
     }
 }
 
+function applyDrag() {
+    for (var obj in objArray) {
+        objArray[obj].dx *= 0.99
+        objArray[obj].dy *= 0.99
+    }
+}
+
 function moveObjects() {
     for (var obj in objArray) {
         objArray[obj].x += objArray[obj].dx;
@@ -195,17 +204,6 @@ function drawObjects() {
     for (var obj in objArray) {
         objArray[obj].draw();
     }
-}
-
-function draw() {
-
-    moveObjects();
-
-    drawObjects();
-    staticCollision();
-    ballCollision();
-    //logger();
-    requestAnimationFrame(draw);
 }
 
 for (i = 0; i<7; i++) {
@@ -400,11 +398,18 @@ function animate() {
 
 
 
-	drawObjects();
-	staticCollision();
-	ballCollision();
+	if (!paused) {
+			arrowControls();
+			if (gravityOn) {
+					applyGravity();
+					applyDrag();
+			}
+			moveObjects();
+	}
 
-
+		drawObjects();
+		staticCollision();
+		ballCollision();
 
 
 
