@@ -91,11 +91,11 @@ function Ball(x, y, radius) {
         context.arc(Math.round(this.x), Math.round(this.y), this.radius, 0, 2*Math.PI);
         context.fillStyle = this.color;
         context.fill();
-				context.drawImage(objectSprite , Math.round(this.x), Math.round(this.y), this.radius, this.radius);
-				context.fill();
         context.strokeStyle = 'rgba(0, 0, 0, 0.6)';
         context.stroke();
         context.closePath();
+				context.drawImage(objectSprite , Math.round(this.x) - this.radius, Math.round(this.y) - this.radius, this.radius*2, this.radius*2);
+				context.fill();
     };
     this.speed = function() {
         // magnitude of velocity vector
@@ -390,9 +390,9 @@ function animate() {
 
 	drawPlayers();
 
-	drawObjects();
+	//drawObjects();
 
-	animateObjects();
+	//animateObjects();
 
 	drawScore();
 
