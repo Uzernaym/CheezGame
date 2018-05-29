@@ -45,7 +45,7 @@ var textColor = "White";
 
 //Powahs
 var bigboomcooldown = 0.5;
-var bigboomcooldowntime = 5000;
+var bigboomcooldowntime = 10000;
 
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
@@ -88,9 +88,9 @@ function Ball(x, y, radius) {
     this.color = playerColor;
     this.draw = function() {
         context.beginPath();
-        context.arc(Math.round(this.x), Math.round(this.y), this.radius, 0, 2*Math.PI);
-        context.fillStyle = this.color;
-        context.fill();
+        //context.arc(Math.round(this.x), Math.round(this.y), this.radius, 0, 2*Math.PI);
+        //context.fillStyle = this.color;
+        //context.fill();
         context.strokeStyle = 'rgba(0, 0, 0, 0.6)';
         context.stroke();
         context.closePath();
@@ -244,7 +244,7 @@ function randomY() {
 
 function randomRadius() {
     if (bigBalls) {
-        r = Math.ceil(Math.random() * 10 + 20);
+        r = Math.ceil(Math.random() * 10 + 30);
         return r;
     } else {
         r = Math.ceil(Math.random() * 2 + 1);
