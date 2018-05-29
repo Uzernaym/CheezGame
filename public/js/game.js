@@ -69,6 +69,7 @@ function updatePowahs() {
 	if (bigboomcooldown === true) {
 		console.log('BIGBOOM');
 		//setTimeout(resetPowahs(), 5000);
+	}
 }
 
 function resetPowahs() {
