@@ -42,11 +42,12 @@ socket.on('playerUpdate', updatePlayers);
 
 function drawObjects() {
 	//objects.forEach(function(object) {
+		var randomSize = Math.floor(Math.random() * objectsSize;
 		context.beginPath();
 		context.fillStyle = playerColor;
 		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false);
 		context.fill();
-		context.drawImage(objectSprite , 5 , 5, 10, 10);
+		context.drawImage(objectSprite ,  randomY, randomX, randomSize, randomSize;
 		context.fill();
 	//})
 }
