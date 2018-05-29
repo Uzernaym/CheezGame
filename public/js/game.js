@@ -323,8 +323,8 @@ function updatePlayers(players) {
 
 		var player = players[playerName];
 		var gamePiece = gamePieces[playerName];
-		gamePiece.x = player.x;
-		gamePiece.y = player.y;
+		this.x = player.x;
+		this.y = player.y;
 	});
 
 	var gamePieceNames = Object.keys(gamePieces);
