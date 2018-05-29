@@ -70,15 +70,16 @@ function updatePowahs() {
 		bigboomcooldown = 0;
 		console.log('BIGBOOM');
 		setTimeout(resetPowahs, bigboomcooldowntime);
-		setTimeout(function(){console.log('BIGBOOM'); }, bigboomcooldowntime/5);
-    setTimeout(function(){console.log('BIGBOOM'); }, 2 * bigboomcooldowntime / 5);
-    setTimeout(function(){console.log('BIGBOOM'); }, 3 * bigboomcooldowntime / 5);
+		setTimeout(function(){console.log('20%'); }, bigboomcooldowntime/5);
+    setTimeout(function(){console.log('40%'); }, 2 * bigboomcooldowntime / 5);
+    setTimeout(function(){console.log('60%'); }, 3 * bigboomcooldowntime / 5);
+		setTimeout(function(){console.log('80%'); }, 4 * bigboomcooldowntime / 5);
 	}
 }
 
 function resetPowahs() {
 	bigboomcooldown = 0.5;
-	console.log('what the FUCK');
+	console.log('Big Boom Ready');
 }
 
 function createNewPlayer(playerName) {
