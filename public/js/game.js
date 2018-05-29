@@ -46,17 +46,15 @@ function drawObjects() {
 	//objects.forEach(function(object) {
 		var randomSize = Math.floor(Math.random() * objectsSize);
 		context.beginPath();
-		context.fillStyle = playerColor;
 		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false);
 		context.fill();
-		context.drawImage(objectSprite ,  randomY, randomX, randomSize, randomSize);
+		context.drawImage(objectSprite ,  randomY, randomX, 100, 100);
 		context.fill();
 	//})
 }
 
 function animateObjects() {
-	console.log('big die')
-}
+
 
 function resizeCanvas() {
 	$canvas.width = window.innerWidth;
