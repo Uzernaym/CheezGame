@@ -55,7 +55,7 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
-function drawObjects() {
+/* function drawObjects() {
 	//objects.forEach(function(object) {
 		var randomSize = Math.floor(Math.random() * objectsSize);
 		context.beginPath();
@@ -69,7 +69,7 @@ function drawObjects() {
 function animateObjects() {
 }
 
-
+*/
 
 
 
@@ -91,6 +91,8 @@ function Ball(x, y, radius) {
         context.arc(Math.round(this.x), Math.round(this.y), this.radius, 0, 2*Math.PI);
         context.fillStyle = this.color;
         context.fill();
+				context.drawImage(objectSprite , Math.round(this.x), Math.round(this.y), this.radius, this.radius);
+				context.fill();
         context.strokeStyle = 'rgba(0, 0, 0, 0.6)';
         context.stroke();
         context.closePath();
@@ -210,7 +212,7 @@ function drawObjects() {
     }
 }
 
-for (i = 0; i<15; i++) {
+for (i = 0; i<12; i++) {
     var temp = new Ball(randomX(), randomY(), randomRadius());
     temp.dx = 0;
     temp.dy = 0;
@@ -423,22 +425,22 @@ function updatePlayerPosition() {
 
 	var gamePiece = gamePieces[user];
 
-		/*	if (keys[38]) {
+		if (keys[87]) {
         if (velY > -speed) {
             velY--;
         }
     }
-    if (keys[40]) {
+    if (keys[83]) {
         if (velY < speed) {
             velY++;
         }
     }
-    if (keys[39]) {
+    if (keys[68]) {
         if (velX < speed) {
             velX++;
         }
     }
-    if (keys[37]) {
+    if (keys[65]) {
         if (velX > -speed) {
             velX--;
         }
@@ -448,7 +450,7 @@ function updatePlayerPosition() {
 			bigboomcooldown = 1;
 		}
 
-		*/
+
 
 		if (keys[67]) { // c
         objArray[objArray.length] = new Ball(randomX(), randomY(), randomRadius());
