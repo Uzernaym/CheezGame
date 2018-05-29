@@ -99,8 +99,8 @@ function Ball(x, y, radius) {
         // magnitude of velocity vector
         return Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
-				if (this.speed >= 25) {
-					this.speed = 25;
+				if (this.speed >= 5) {
+					this.speed = 5;
 				}
     };
     this.angle = function() {
