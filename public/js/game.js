@@ -175,11 +175,27 @@ function ballCollision() {
 
 function playerCollision(gamePiece) {
 	for (var obj1 in objArray) {
-		for (var obj2 in objArray) {
-				if (obj1 !== obj2 && distanceNextFrame(objArray[obj1], objArray[obj2]) <= 0) {
-					console.log('hi');
+			for (var obj2 in objArray) {
+					if (obj1 !== obj2 && distanceNextFrame(gamePiece, objArray[obj2]) <= 0) {
+							var theta1 = gamePiece.angle();
+							var theta2 = objArray[obj2].angle();
+							var phi = Math.atan2(objArray[obj2].y - gamePiece.y, objArray[obj2].x - gamePiece.x);
+							var m1 = gamePiece.mass;
+							var m2 = objArray[obj2].mass;
+							var v1 = gamePiece.speed();
+							var v2 = objArray[obj2].speed();
+
+							var dx1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.cos(phi) + v1*Math.sin(theta1-phi) * Math.cos(phi+Math.PI/2);
+							var dy1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.sin(phi) + v1*Math.sin(theta1-phi) * Math.sin(phi+Math.PI/2);
+							var dx2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.cos(phi) + v2*Math.sin(theta2-phi) * Math.cos(phi+Math.PI/2);
+							var dy2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.sin(phi) + v2*Math.sin(theta2-phi) * Math.sin(phi+Math.PI/2);
+
+							gamePiece.dx = dx1F;
+							gamePiece.dy = dy1F;
+							objArray[obj2].dx = dx2F;
+							objArray[obj2].dy = dy2F;
+					}
 			}
-		}
 	}
 }
 
