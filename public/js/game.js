@@ -166,15 +166,15 @@ function updatePlayerPosition() {
     gamePiece.x += velX;
 
     if (gamePiece.x + pieceWidth >= $canvas.width - 30) {
-        gamePiece.x + pieceWidth = $canvas.width - 30;
+        gamePiece.x = $canvas.width - 30 - pieceWidth;
     } else if (gamePiece.x - pieceWidth <= 0) {
-        gamePiece.x - pieceWidth = 0;
+        gamePiece.x = 0 + pieceWidth;
     }
 
     if (gamePiece.y + pieceWidth > $canvas.height - 30) {
-        gamePiece.y + pieceWidth = $canvas.height - 30;
+        gamePiece.y = $canvas.height - 30 - pieceWidth;
     } else if (gamePiece.y - pieceWidth <= 0) {
-        gamePiece.y - pieceWidth = 0;
+        gamePiece.y = 0 + pieceWidth;
     }
 
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
