@@ -41,14 +41,14 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 socket.on('playerUpdate', updatePlayers);
 
 function drawObjects() {
-	objects.forEach(function(object) {
+	//objects.forEach(function(object) {
 		context.beginPath();
 		context.fillStyle = playerColor;
-		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false)
-		context.fill()
+		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false);
+		context.fill();
 		context.drawImage(objectSprite , 5 , 5, 10, 10);
-		context.fill()
-	})
+		context.fill();
+	//})
 }
 
 function resizeCanvas() {
