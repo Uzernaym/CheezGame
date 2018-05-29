@@ -382,7 +382,7 @@ function animate() {
 
 	updatePowahs();
 
-	checkCollisions();
+	//checkCollisions();
 
 
 
