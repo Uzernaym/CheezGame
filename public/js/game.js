@@ -1,5 +1,6 @@
 var gamePieces = {};
 var playerFont = "15px Arial";
+var playerScoreFont = "10px Arial"
 var $canvas = document.querySelector('canvas');
 var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
@@ -172,7 +173,9 @@ function ballCollision() {
 }
 
 function playerCollision() {
-	if (obj1 !== obj2 && distanceNextFrame(objArray[obj1], objArray[obj2]) <= 0)
+	if (obj1 !== obj2 && distanceNextFrame(gamePiece, objArray[obj2]) <= 0) {
+		console.log('hi');
+	}
 }
 
 function staticCollision() {
@@ -279,19 +282,6 @@ function distance(a, b) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function resizeCanvas() {
 	$canvas.width = window.innerWidth;
 	$canvas.height = window.innerHeight;
@@ -381,6 +371,8 @@ function drawPlayers() {
 		context.textAlign = 'center';
 		context.font = playerFont;
 		context.fillText(playerName , fontPieceX, fontPieceY);
+		context.font = playerScoreFont;
+		context.fillText(score, fontPieceX, fontPieceY + 5);
 	});
 
 }
