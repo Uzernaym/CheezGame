@@ -76,7 +76,7 @@ function Ball(x, y, radius) {
     this.mass = this.radius * this.radius * this.radius;
     this.x = x;
     this.y = y;
-    this.color = randomColor();
+    this.color = playerColor;
     this.draw = function() {
         context.beginPath();
         context.arc(Math.round(this.x), Math.round(this.y), this.radius, 0, 2*Math.PI);
