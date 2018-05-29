@@ -399,7 +399,6 @@ function animate() {
 
 
 	if (!paused) {
-			arrowControls();
 			if (gravityOn) {
 					applyGravity();
 					applyDrag();
