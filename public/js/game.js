@@ -36,7 +36,7 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
-fucntion drawObjects() {
+function drawObjects() {
 
 }
 
