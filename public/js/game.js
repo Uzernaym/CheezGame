@@ -101,8 +101,11 @@ function Ball(x, y, radius) {
         // magnitude of velocity vector
         return Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
-				if (this.speed >= 5) {
-					this.speed = 5;
+				if (this.dx >= 10) {
+					this.x = 10;
+				}
+				if (this.dy >= 10) {
+					this.dy = 10
 				}
     };
     this.angle = function() {
@@ -213,7 +216,7 @@ function drawObjects() {
 }
 
 for (i = 0; i<12; i++) {
-    var temp = new Ball(randomX(), randomY(), randomRadius());
+    var temp = new Ball(randomX(), randomY(), randomRadius(), 15);
     temp.dx = 0;
     temp.dy = 0;
     objArray[objArray.length] = temp;
