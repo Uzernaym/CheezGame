@@ -419,7 +419,7 @@ function animate() {
 		staticCollision();
 		ballCollision();
 
-		playerCollision();
+		//playerCollision();
 
 	window.requestAnimationFrame(animate);
 }
