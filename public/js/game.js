@@ -98,6 +98,10 @@ function Ball(x, y, radius) {
     this.speed = function() {
         // magnitude of velocity vector
         return Math.sqrt(this.dx * this.dx + this.dy * this.dy);
+
+				if (this.speed >= 25) {
+					this.speed = 25;
+				}
     };
     this.angle = function() {
         //angle of ball with the x axis
@@ -206,7 +210,7 @@ function drawObjects() {
     }
 }
 
-for (i = 0; i<7; i++) {
+for (i = 0; i<15; i++) {
     var temp = new Ball(randomX(), randomY(), randomRadius());
     temp.dx = 0;
     temp.dy = 0;
@@ -235,7 +239,7 @@ function randomY() {
 
 function randomRadius() {
     if (bigBalls) {
-        r = Math.ceil(Math.random() * 10 + 13);
+        r = Math.ceil(Math.random() * 10 + 20);
         return r;
     } else {
         r = Math.ceil(Math.random() * 2 + 1);
