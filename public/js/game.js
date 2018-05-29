@@ -9,6 +9,7 @@ var velY = 0;
 var velX = 0;
 var speed = 5;
 var friction = 0.98;
+var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 
 //Scoring Variables
 var score = 1;
@@ -19,11 +20,28 @@ var timerFont = "20px Arial";
 var timerPosition = {x: 60, y: $canvas.height - 20};
 var textColor = "White";
 
+//Powahs
+var bigboomcooldown = false;
+var bigboomcooldowntime = 5000;
+
 //Random Color
 var colors = ['red', 'green', 'blue', 'orange'];
 var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
+
+function updatePowahs() {
+	if (bigboomcooldown === true) {
+		console.log('BIGBOOM');
+		setTimeout(resetPowahs(), 5000);
+	else {
+		return
+	}
+}
+
+function resetPowahs() {
+	var bigboomcooldown = false;
+}
 
 function updatePlayers(players) {
 
@@ -61,8 +79,9 @@ function drawScore() {
 }
 
 function createNewPlayer(playerName) {
-
-	var gamePiece = { loaded: false, x: 0, y:0 };
+	var randomX = Math.floor((Math.random() * $canvas.width) + 1);
+	var randomY = Math.floor((Math.random() * $canvas.height) + 1);
+	var gamePiece = { loaded: false, x: randomX, y: randomY };
 	gamePiece.avatar = new Image();
 	gamePiece.avatar.onload = function() {
 		gamePiece.loaded = true;
@@ -76,7 +95,6 @@ function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
 	//var playerColor = colors[playerNames.length % 4];
-	var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
@@ -101,13 +119,16 @@ function animate() {
 	timer += 1/60;
 	score += 1/60;
 	score = Math.max(score, 0);
+	bigboom += 1/60;
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	updatePlayerPosition();
 
 	drawPlayers();
 
-	drawScore()
+	drawScore();
+
+	updatePowahs();
 
 	window.requestAnimationFrame(animate);
 }
@@ -121,7 +142,6 @@ function updatePlayerPosition() {
             velY--;
         }
     }
-
     if (keys[40]) {
         if (velY < speed) {
             velY++;
@@ -137,22 +157,27 @@ function updatePlayerPosition() {
             velX--;
         }
     }
+		if (keys[32]) {
+			if (bigboomcooldown === false)
+			bigboomcooldown = true;
+
+		}
 
     velY *= friction;
     gamePiece.y += velY;
     velX *= friction;
     gamePiece.x += velX;
 
-    if (gamePiece.x >= $canvas.width - 60) {
-        gamePiece.x = $canvas.width - 60;
-    } else if (gamePiece.x <= 0) {
-        gamePiece.x = 0;
+    if (gamePiece.x + pieceWidth >= $canvas.width - 30) {
+        gamePiece.x + pieceWidth = $canvas.width - 30;
+    } else if (gamePiece.x - pieceWidth <= 0) {
+        gamePiece.x - pieceWidth = 0;
     }
 
-    if (gamePiece.y > $canvas.height - 60) {
-        gamePiece.y = $canvas.height - 60;
-    } else if (gamePiece.y <= 0) {
-        gamePiece.y = 0;
+    if (gamePiece.y + pieceWidth > $canvas.height - 30) {
+        gamePiece.y + pieceWidth = $canvas.height - 30;
+    } else if (gamePiece.y - pieceWidth <= 0) {
+        gamePiece.y - pieceWidth = 0;
     }
 
 	socket.emit('playerUpdate', {x: gamePiece.x, y: gamePiece.y});
