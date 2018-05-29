@@ -348,8 +348,8 @@ function resetPowahs() {
 	console.log('Big Boom Ready');
 }
 
-function useBigBoom(gamePiece.x, gamePiece.y) {
-	objArray[objArray.length] = new Ball(gamePiece.x, gamePiece.y, 15);
+function useBigBoom(fontPieceX, fontPieceY) {
+	objArray[objArray.length] = new Ball(fontPieceX, fontPieceY, 15);
 }
 
 function createNewPlayer(playerName) {
