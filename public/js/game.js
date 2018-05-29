@@ -33,7 +33,7 @@ socket.on('playerUpdate', updatePlayers);
 function updatePowahs() {
 	if (bigboomcooldown === true) {
 		console.log('BIGBOOM');
-		setTimeout(resetPowahs(), 5000);
+		//setTimeout(resetPowahs(), 5000);
 }
 
 function resetPowahs() {
@@ -116,7 +116,6 @@ function animate() {
 	timer += 1/60;
 	score += 1/60;
 	score = Math.max(score, 0);
-	bigboom += 1/60;
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	updatePlayerPosition();
@@ -157,7 +156,6 @@ function updatePlayerPosition() {
 		if (keys[32]) {
 			if (bigboomcooldown === false)
 			bigboomcooldown = true;
-
 		}
 
     velY *= friction;
