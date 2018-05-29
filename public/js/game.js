@@ -376,7 +376,7 @@ function animate() {
 
 	drawObjects();
 
-	animateObjects();
+	//animateObjects();
 
 	drawScore();
 
