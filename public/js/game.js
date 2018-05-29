@@ -50,7 +50,7 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 
 socket.on('playerUpdate', updatePlayers);
 
-/*function drawObjects() {
+function drawObjects() {
 	//objects.forEach(function(object) {
 		var randomSize = Math.floor(Math.random() * objectsSize);
 		context.beginPath();
@@ -58,11 +58,11 @@ socket.on('playerUpdate', updatePlayers);
 		context.fill();
 		context.drawImage(objectSprite ,  randomY, randomX, 100, 100);
 		context.fill();
-	//})
+	})
 }
 
 function animateObjects() {
-} */
+}
 
 
 
@@ -388,7 +388,7 @@ function animate() {
 
 	drawObjects();
 
-	//animateObjects();
+	animateObjects();
 
 	drawScore();
 
