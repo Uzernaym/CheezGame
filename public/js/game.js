@@ -171,6 +171,10 @@ function ballCollision() {
     }
 }
 
+function playerCollision() {
+	if (obj1 !== obj2 && distanceNextFrame(objArray[obj1], objArray[obj2]) <= 0)
+}
+
 function staticCollision() {
     for (var obj1 in objArray) {
         for (var obj2 in objArray) {
@@ -215,7 +219,7 @@ function drawObjects() {
     }
 }
 
-for (i = 0; i<12; i++) {
+for (i = 0; i<13; i++) {
     var temp = new Ball(randomX(), randomY(), randomRadius(), 15);
     objArray[objArray.length] = temp;
 }
@@ -242,7 +246,7 @@ function randomY() {
 
 function randomRadius() {
     if (bigBalls) {
-        r = Math.ceil(Math.random() * 10 + 30);
+        r = Math.ceil(Math.random() * 10 + 50);
         return r;
     } else {
         r = Math.ceil(Math.random() * 2 + 1);
@@ -252,12 +256,12 @@ function randomRadius() {
 }
 
 function randomDx() {
-    r = Math.floor(Math.random() * 10 - 5);
+    r = Math.floor(Math.random() * 10 - 4);
     return r;
 }
 
 function randomDy() {
-    r = Math.floor(Math.random() * 10 - 5);
+    r = Math.floor(Math.random() * 10 - 4);
     return r;
 }
 
@@ -417,7 +421,7 @@ function animate() {
 		staticCollision();
 		ballCollision();
 
-
+		playerCollision();
 
 	window.requestAnimationFrame(animate);
 }
