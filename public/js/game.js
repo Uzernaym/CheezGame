@@ -333,6 +333,7 @@ function drawScore() {
 function updatePowahs() {
 	if (bigboomcooldown === 1) {
 		bigboomcooldown = 0;
+		useBigBoom();
 		console.log('BIGBOOM');
 		setTimeout(resetPowahs, bigboomcooldowntime);
 		setTimeout(function(){console.log('20%'); }, bigboomcooldowntime/5);
@@ -345,6 +346,10 @@ function updatePowahs() {
 function resetPowahs() {
 	bigboomcooldown = 0.5;
 	console.log('Big Boom Ready');
+}
+
+function useBigBoom(gamePiece.x, gamePiece.y) {
+	objArray[objArray.length] = new Ball(gamePiece.x, gamePiece.y, 15);
 }
 
 function createNewPlayer(playerName) {
