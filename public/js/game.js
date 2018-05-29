@@ -4,6 +4,8 @@ var $canvas = document.querySelector('canvas');
 var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
 $canvas.height = window.innerHeight;
+var randomX = Math.floor((Math.random() * $canvas.width) + 1);
+var randomY = Math.floor((Math.random() * $canvas.height) + 1);
 var keys = [];
 var velY = 0;
 var velX = 0;
@@ -116,8 +118,7 @@ function resetPowahs() {
 }
 
 function createNewPlayer(playerName) {
-	var randomX = Math.floor((Math.random() * $canvas.width) + 1);
-	var randomY = Math.floor((Math.random() * $canvas.height) + 1);
+
 	var gamePiece = { loaded: false, x: randomX, y: randomY };
 	gamePiece.avatar = new Image();
 	gamePiece.avatar.onload = function() {
