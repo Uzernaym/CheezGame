@@ -9,7 +9,7 @@ var velY = 0;
 var velX = 0;
 var speed = 5;
 var friction = 0.98;
-var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
+var pieceWidth = 20;
 
 //World and Viewport Variables
 
@@ -18,10 +18,10 @@ var pieceWidth = Math.min($canvas.width, $canvas.height) / 20;
 //Scoring Variables
 var score = 1;
 var scoreFont = "50px Arial";
-var scorePosition = {x: $canvas.width/2 - 15, y:100};
+var scorePosition = {x: $canvas.width/2, y:100};
 var timer = 0;
 var timerFont = "20px Arial";
-var timerPosition = {x: 60, y: $canvas.height - 20};
+var timerPosition = {x: 60, y: $canvas.height};
 var textColor = "White";
 
 //Powahs
@@ -43,6 +43,8 @@ function drawObjects() {
 function resizeCanvas() {
 	$canvas.width = window.innerWidth;
 	$canvas.height = window.innerHeight;
+	scorePosition = {x: $canvas.width/2, y:100};
+	timerPosition = {x: 60, y: $canvas.height};
 }
 
 function updatePlayers(players) {
@@ -186,14 +188,14 @@ function updatePlayerPosition() {
     velX *= friction;
     gamePiece.x += velX;
 
-    if (gamePiece.x + pieceWidth >= $canvas.width - 30) {
-        gamePiece.x = $canvas.width - 30 - pieceWidth;
+    if (gamePiece.x + pieceWidth >= $canvas.width) {
+        gamePiece.x = $canvas.width - pieceWidth;
     } else if (gamePiece.x - pieceWidth <= 0) {
         gamePiece.x = 0 + pieceWidth;
     }
 
-    if (gamePiece.y + pieceWidth > $canvas.height - 30) {
-        gamePiece.y = $canvas.height - 30 - pieceWidth;
+    if (gamePiece.y + pieceWidth > $canvas.height) {
+        gamePiece.y = $canvas.height - pieceWidth;
     } else if (gamePiece.y - pieceWidth <= 0) {
         gamePiece.y = 0 + pieceWidth;
     }
