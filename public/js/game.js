@@ -69,7 +69,10 @@ function updatePowahs() {
 	if (bigboomcooldown === 1) {
 		bigboomcooldown = 0;
 		console.log('BIGBOOM');
-		setTimeout(resetPowahs, 5000);
+		setTimeout(resetPowahs, bigboomcooldowntime);
+		setTimeout(function(){console.log('BIGBOOM'); }, bigboomcooldowntime/5);
+    setTimeout(function(){console.log('BIGBOOM'); }, 2 * bigboomcooldowntime / 5);
+    setTimeout(function(){console.log('BIGBOOM'); }, 3 * bigboomcooldowntime / 5);
 	}
 }
 
