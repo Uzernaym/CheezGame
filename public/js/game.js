@@ -179,7 +179,7 @@ function playerCollision(gamePiece) {
 					if (obj1 !== obj2 && distanceNextFrame2(gamePiece, objArray[obj2]) <= 0) {
 							var theta1 = gamePiece.angle();
 							var theta2 = objArray[obj2].angle();
-							var phi = Math.atan2(objArray[obj2].y - gamePiece.y, objArray[obj2].x - gamePiece.x);
+							var phi = Math.atan2(objArray[obj2].y - fontPieceY, objArray[obj2].x - fontPieceX);
 							var m1 = gamePiece.mass;
 							var m2 = objArray[obj2].mass;
 							var v1 = gamePiece.speed();
@@ -293,8 +293,9 @@ function distanceNextFrame(a, b) {
     return Math.sqrt((a.x + a.dx - b.x - b.dx)**2 + (a.y + a.dy - b.y - b.dy)**2) - a.radius - b.radius;
 }
 
-function distanceNextFrame2(a, b, gamePiece) {
-	return Math.sqrt((gamePiece.x + gamePiece.dx - b.x - b.dx)**2 + (gamePiece.y + gamePiece.dy - b.y - b.dy)**2) - gamePiece.radius - b.radius;
+function distanceNextFrame2(a, b, fontPieceX, fontPieceY) {
+	gamePiece.x =
+	return Math.sqrt((fontPieceX + gamePiece.dx - b.x - b.dx)**2 + (fontPieceY + gamePiece.dy - b.y - b.dy)**2) - gamePiece.radius - b.radius;
 }
 
 function distance(a, b) {
