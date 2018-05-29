@@ -294,7 +294,6 @@ function distanceNextFrame(a, b) {
 }
 
 function distanceNextFrame2(a, b, fontPieceX, fontPieceY) {
-	gamePiece.x =
 	return Math.sqrt((fontPieceX + gamePiece.dx - b.x - b.dx)**2 + (fontPieceY + gamePiece.dy - b.y - b.dy)**2) - gamePiece.radius - b.radius;
 }
 
