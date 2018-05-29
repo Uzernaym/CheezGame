@@ -194,6 +194,8 @@ function playerCollision(gamePiece) {
 							gamePiece.dy = dy1F;
 							objArray[obj2].dx = dx2F;
 							objArray[obj2].dy = dy2F;
+
+							console.log('hi');
 					}
 			}
 	}
