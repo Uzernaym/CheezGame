@@ -83,6 +83,7 @@ function drawPlayers() {
 		var fontPieceX = gamePiece.x + pieceWidth/2;
 		var fontPieceY = gamePiece.y + pieceWidth/2;
 		if(!gamePiece.loaded) return;
+		context.beginPath();
 		context.fillStyle = playerColor;
 		context.arc(gamePiece.x, gamePiece.y, pieceWidth, 0, 2 * Math.PI, false)
 		//context.fillRect(gamePiece.x, gamePiece.y, pieceWidth, pieceWidth)
