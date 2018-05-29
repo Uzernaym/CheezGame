@@ -433,6 +433,26 @@ function updatePlayerPosition() {
 		if (keys[67]) { // c
         objArray[objArray.length] = new Ball(randomX(), randomY(), randomRadius());
 		}
+		
+		function arrowControls() {
+    if (leftHeld) { // left arrow
+        for (var obj in objArray) {
+            objArray[obj].dx -= 0.3;
+        }
+    } if (upHeld) { // up arrow
+        for (var obj in objArray) {
+            objArray[obj].dy -= 0.3;
+        }
+    } if (rightHeld) { // right arrow
+        for (var obj in objArray) {
+            objArray[obj].dx += 0.3;
+        }
+    } if (downHeld) { // down arrow
+        for (var obj in objArray) {
+            objArray[obj].dy += 0.3;
+        }
+    }
+}
 
 
 
