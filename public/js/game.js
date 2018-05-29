@@ -15,6 +15,10 @@ var pieceWidth = 15;
 
 
 var bigBalls = true;
+var leftHeld = false;
+var upHeld = false;
+var rightHeld = false;
+var downHeld = false;
 
 //World and Viewport Variables
 
