@@ -176,7 +176,7 @@ function ballCollision() {
 function playerCollision(gamePiece) {
 	for (var obj1 in objArray) {
 			for (var obj2 in objArray) {
-					if (obj1 !== obj2 && distanceNextFrame(gamePiece, objArray[obj2]) <= 0) {
+					if (obj1 !== obj2 && distanceNextFrame2(gamePiece, objArray[obj2]) <= 0) {
 							var theta1 = gamePiece.angle();
 							var theta2 = objArray[obj2].angle();
 							var phi = Math.atan2(objArray[obj2].y - gamePiece.y, objArray[obj2].x - gamePiece.x);
@@ -190,8 +190,6 @@ function playerCollision(gamePiece) {
 							var dx2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.cos(phi) + v2*Math.sin(theta2-phi) * Math.cos(phi+Math.PI/2);
 							var dy2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.sin(phi) + v2*Math.sin(theta2-phi) * Math.sin(phi+Math.PI/2);
 
-							gamePiece.x = player.x;
-							gamePiece.y = player.y;
 							gamePiece.dx = dx1F;
 							gamePiece.dy = dy1F;
 							objArray[obj2].dx = dx2F;
@@ -293,6 +291,10 @@ function randomDy() {
 
 function distanceNextFrame(a, b) {
     return Math.sqrt((a.x + a.dx - b.x - b.dx)**2 + (a.y + a.dy - b.y - b.dy)**2) - a.radius - b.radius;
+}
+
+function distanceNextFrame2(a, b) {
+	return Math.sqrt((gamePiece.x + gamePiece.dx - b.x - b.dx)**2 + (gamePiece.y + gamePiece.dy - b.y - b.dy)**2) - gamePiece.radius - b.radius;
 }
 
 function distance(a, b) {
