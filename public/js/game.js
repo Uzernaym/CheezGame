@@ -1,5 +1,5 @@
 var gamePieces = {};
-var playerFont = "20px Arial";
+var playerFont = "15px Arial";
 var $canvas = document.querySelector('canvas');
 var context = $canvas.getContext('2d');
 $canvas.width = window.innerWidth;
@@ -9,11 +9,12 @@ var velY = 0;
 var velX = 0;
 var speed = 5;
 var friction = 0.98;
-var pieceWidth = 20;
+var pieceWidth = 15;
 
 //World and Viewport Variables
 
 //Object Variables
+
 
 //Scoring Variables
 var score = 1;
