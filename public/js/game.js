@@ -58,7 +58,7 @@ function drawObjects() {
 		context.fill();
 		context.drawImage(objectSprite ,  randomY, randomX, 100, 100);
 		context.fill();
-	})
+	
 }
 
 function animateObjects() {
