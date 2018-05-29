@@ -68,12 +68,13 @@ function drawScore() {
 function updatePowahs() {
 	if (bigboomcooldown === true) {
 		console.log('BIGBOOM');
-		setTimeout(resetPowahs(), 5000);
+		setTimeout(resetPowahs, 5000);
 	}
 }
 
 function resetPowahs() {
 	var bigboomcooldown = false;
+	console.log('what the FUCK');
 }
 
 function createNewPlayer(playerName) {
