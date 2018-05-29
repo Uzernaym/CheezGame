@@ -14,7 +14,11 @@ var pieceWidth = 15;
 //World and Viewport Variables
 
 //Object Variables
-
+var objectSprite = new Image();
+imageObj.src = 'https://orig00.deviantart.net/10d0/f/2010/311/f/0/rock_planet_sprite_by_fidgetwidget-d32erpc.png';
+var objectsSize = [3, 5, 10];
+var objectSpeed = [0.1, 0.5, 1, 1.5, 2.5, 3]
+var objects = [];
 
 //Scoring Variables
 var score = 1;
@@ -22,7 +26,7 @@ var scoreFont = "50px Arial";
 var scorePosition = {x: $canvas.width/2, y:100};
 var timer = 0;
 var timerFont = "20px Arial";
-var timerPosition = {x: 60, y: $canvas.height};
+var timerPosition = {x: 60, y: $canvas.height + 10};
 var textColor = "White";
 
 //Powahs
@@ -38,14 +42,21 @@ var playerColor = colors[Math.floor(Math.random() * colors.length)];
 socket.on('playerUpdate', updatePlayers);
 
 function drawObjects() {
-
+	objects.forEach(function(object) {
+		context.beginPath();
+		context.fillStyle = playerColor;
+		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false)
+		context.fill()
+		context.drawImage(objectSprite , 5 , 5, 10, 10);
+		context.fill()
+	})
 }
 
 function resizeCanvas() {
 	$canvas.width = window.innerWidth;
 	$canvas.height = window.innerHeight;
 	scorePosition = {x: $canvas.width/2, y:100};
-	timerPosition = {x: 60, y: $canvas.height};
+	timerPosition = {x: 60, y: $canvas.height + 10};
 }
 
 function updatePlayers(players) {
@@ -115,12 +126,11 @@ function createNewPlayer(playerName) {
 function drawPlayers() {
 
 	var playerNames = Object.keys(gamePieces);
-	//var playerColor = colors[playerNames.length % 4];
 
 	playerNames.forEach(function(playerName) {
 		var gamePiece = gamePieces[playerName];
-		var fontPieceX = gamePiece.x + pieceWidth/2;
-		var fontPieceY = gamePiece.y + pieceWidth/2;
+		var fontPieceX = gamePiece.x;
+		var fontPieceY = gamePiece.y;
 		if(!gamePiece.loaded) return;
 		context.beginPath();
 		context.fillStyle = playerColor;
@@ -131,7 +141,7 @@ function drawPlayers() {
 		context.fillStyle = 'white'
 		context.textAlign = 'center';
 		context.font = playerFont;
-		context.fillText(playerName , fontPieceX, fontPieceY + 2);
+		context.fillText(playerName , fontPieceX, fontPieceY);
 	});
 
 }
