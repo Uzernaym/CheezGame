@@ -190,6 +190,8 @@ function playerCollision(gamePiece) {
 							var dx2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.cos(phi) + v2*Math.sin(theta2-phi) * Math.cos(phi+Math.PI/2);
 							var dy2F = (v2 * Math.cos(theta2 - phi) * (m2-m1) + 2*m1*v1*Math.cos(theta1 - phi)) / (m1+m2) * Math.sin(phi) + v2*Math.sin(theta2-phi) * Math.sin(phi+Math.PI/2);
 
+							gamePiece.x = player.x;
+							gamePiece.y = player.y;
 							gamePiece.dx = dx1F;
 							gamePiece.dy = dy1F;
 							objArray[obj2].dx = dx2F;
@@ -323,8 +325,8 @@ function updatePlayers(players) {
 
 		var player = players[playerName];
 		var gamePiece = gamePieces[playerName];
-		this.x = player.x;
-		this.y = player.y;
+		gamePiece.x = player.x;
+		gamePiece.y = player.y;
 	});
 
 	var gamePieceNames = Object.keys(gamePieces);
