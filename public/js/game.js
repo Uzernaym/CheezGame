@@ -26,7 +26,7 @@ var scoreFont = "50px Arial";
 var scorePosition = {x: $canvas.width/2, y:100};
 var timer = 0;
 var timerFont = "20px Arial";
-var timerPosition = {x: 60, y: $canvas.height + 10};
+var timerPosition = {x: 60, y: $canvas.height - 10};
 var textColor = "White";
 
 //Powahs
@@ -47,7 +47,7 @@ function drawObjects() {
 		context.fillStyle = playerColor;
 		context.arc(objects.x, objects.y, objectsSize, 0, 2 * Math.PI, false)
 		context.fill()
-		context.drawImage(objectSprite , 5 , 5, 10, 10);
+		context.drawImage(objectSprite.src , 5 , 5, 10, 10);
 		context.fill()
 	})
 }
