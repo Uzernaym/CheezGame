@@ -73,7 +73,7 @@ function updatePowahs() {
 }
 
 function resetPowahs() {
-	var bigboomcooldown = false;
+	bigboomcooldown = false;
 	console.log('what the FUCK');
 }
 
