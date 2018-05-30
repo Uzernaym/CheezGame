@@ -278,7 +278,7 @@ function randomY() {
 
 function randomRadius() {
     if (bigBalls) {
-        r = Math.ceil(Math.random() * 12 + 50);
+        r = Math.ceil(Math.random() * 20 + 50);
         return r;
     } else {
         r = Math.ceil(Math.random() * 2 + 1);
