@@ -372,7 +372,7 @@ function drawScore() {
 function updatePowahs() {
 	if (bigboomcooldown === 1) {
 		bigboomcooldown = 0;
-		useBigBoom(fontPieceX, fontPieceY);
+		useBigBoom();
 		console.log('BIGBOOM');
 		setTimeout(resetPowahs, bigboomcooldowntime);
 		setTimeout(function(){console.log('20%'); }, bigboomcooldowntime/5);
