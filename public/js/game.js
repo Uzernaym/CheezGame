@@ -443,7 +443,7 @@ function animate() {
 
 	//animateObjects();
 
-	drawScore();
+	//drawScore();
 
 	updatePowahs();
 
