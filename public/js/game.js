@@ -96,6 +96,7 @@ function Ball(x, y, radius) {
         context.stroke();
         context.closePath();
 				context.drawImage(objectSprite , Math.round(this.x) - this.radius, Math.round(this.y) - this.radius, this.radius*2, this.radius*2);
+        canvas.rotate(1);
 				context.fill();
     };
     this.speed = function() {
