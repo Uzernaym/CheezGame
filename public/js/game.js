@@ -431,7 +431,7 @@ function animate() {
 	timer += 1/60;
 	score += 1/60;
 	score = Math.max(score, 0);
-  soc
+
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	updatePlayerPosition();
