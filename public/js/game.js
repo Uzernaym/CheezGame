@@ -96,7 +96,6 @@ function Ball(x, y, radius) {
         context.stroke();
         context.closePath();
 				context.drawImage(objectSprite , Math.round(this.x) - this.radius, Math.round(this.y) - this.radius, this.radius*2, this.radius*2);
-        context.rotate(1);
 				context.fill();
     };
     this.speed = function() {
@@ -349,7 +348,7 @@ function updatePlayers(players) {
 
 }
 
-function drawScore() {
+/* function drawScore() {
     context.fillStyle = textColor;
     context.font = timerFont;
     context.fillText(`${parseInt(timer)} Seconds`,timerPosition.x, timerPosition.y);
@@ -368,7 +367,7 @@ function drawScore() {
         $ul.appendChild($li);
 
     });
-}
+} */
 
 function updatePowahs() {
 	if (bigboomcooldown === 1) {
