@@ -175,7 +175,9 @@ function ballCollision() {
 
 function playerCollision(gamePiece) {
   for (var obj1 in objArray) {
-    if distance(gamePiece, )
+    if distance(gamePiece, objArray[obj1] <= 0) {
+
+    }
   }
 }
 /*	for (var obj1 in objArray) {
