@@ -11,7 +11,7 @@ var keys = [];
 var velY = 0;
 var velX = 0;
 var speed = 5;
-var friction = 0.9;
+var friction = 0.95;
 var pieceWidth = 15;
 
 
@@ -276,7 +276,7 @@ function randomY() {
 
 function randomRadius() {
     if (bigBalls) {
-        r = Math.ceil(Math.random() * 10 + 50);
+        r = Math.ceil(Math.random() * 12 + 50);
         return r;
     } else {
         r = Math.ceil(Math.random() * 2 + 1);
