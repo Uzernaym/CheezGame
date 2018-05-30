@@ -372,7 +372,7 @@ function drawScore() {
 function updatePowahs() {
 	if (bigboomcooldown === 1) {
 		bigboomcooldown = 0;
-		useBigBoom();
+		useBigBoom(fontPieceX, fontPieceY);
 		console.log('BIGBOOM');
 		setTimeout(resetPowahs, bigboomcooldowntime);
 		setTimeout(function(){console.log('20%'); }, bigboomcooldowntime/5);
@@ -388,6 +388,7 @@ function resetPowahs() {
 }
 
 function useBigBoom(fontPieceX, fontPieceY) {
+  console.log('thisisdoingathing');
 	objArray[objArray.length] = new Ball(fontPieceX, fontPieceY, 15);
 }
 
