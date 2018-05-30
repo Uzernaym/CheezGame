@@ -169,7 +169,7 @@ function ballCollision() {
             }
         }
         wallCollision(objArray[obj1]);
-				playerCollision();
+				//playerCollision();
     }
 }
 
