@@ -154,7 +154,7 @@ function ballCollision() {
                 var phi = Math.atan2(objArray[obj2].y - objArray[obj1].y, objArray[obj2].x - objArray[obj1].x);
                 var m1 = objArray[obj1].mass;
                 var m2 = objArray[obj2].mass;
-                var v1 = objArray[obj1].speed();
+                var v1 = objArray[ob.j1].speed();
                 var v2 = objArray[obj2].speed();
 
                 var dx1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.cos(phi) + v1*Math.sin(theta1-phi) * Math.cos(phi+Math.PI/2);
@@ -174,7 +174,11 @@ function ballCollision() {
 }
 
 function playerCollision(gamePiece) {
-	for (var obj1 in objArray) {
+  for (var obj1 in objArray) {
+    if distance(gamePiece, )
+  }
+}
+/*	for (var obj1 in objArray) {
 			for (var obj2 in objArray) {
 					if (obj1 !== obj2 && distanceNextFrame2(gamePiece, objArray[obj2]) <= 0) {
 							var theta1 = gamePiece.angle();
@@ -199,7 +203,7 @@ function playerCollision(gamePiece) {
 					}
 			}
 	}
-}
+} */
 
 function staticCollision() {
     for (var obj1 in objArray) {
@@ -349,6 +353,18 @@ function drawScore() {
 
     context.font = scoreFont;
     context.fillText(`${parseInt(score)}` ,scorePosition.x, scorePosition.y);
+
+    function sendScore(e) {
+      if(e.key !== 'Enter') return;
+      socket.emit('message', {message: score, user: user});
+    }
+      socket.on('newMessage', (score) => {
+        var $ul = document.querySelector('#chat ul');
+        var $li = document.createElement('li');
+        $li.innerHTML = `<strong>${message.user}:</strong> ${message.message}`;
+        $ul.appendChild($li);
+
+    });
 }
 
 function updatePowahs() {
@@ -413,6 +429,7 @@ function animate() {
 	timer += 1/60;
 	score += 1/60;
 	score = Math.max(score, 0);
+  soc
 
 	context.clearRect(0, 0, $canvas.width, $canvas.height);
 	updatePlayerPosition();
