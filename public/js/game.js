@@ -173,13 +173,13 @@ function ballCollision() {
     }
 }
 
-function playerCollision(gamePiece) {
+/* function playerCollision(gamePiece) {
   for (var obj1 in objArray) {
     if distance(gamePiece, objArray[obj1] <= 0) {
 
     }
   }
-}
+} */
 /*	for (var obj1 in objArray) {
 			for (var obj2 in objArray) {
 					if (obj1 !== obj2 && distanceNextFrame2(gamePiece, objArray[obj2]) <= 0) {
