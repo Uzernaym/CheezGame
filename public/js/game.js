@@ -154,7 +154,7 @@ function ballCollision() {
                 var phi = Math.atan2(objArray[obj2].y - objArray[obj1].y, objArray[obj2].x - objArray[obj1].x);
                 var m1 = objArray[obj1].mass;
                 var m2 = objArray[obj2].mass;
-                var v1 = objArray[ob.j1].speed();
+                var v1 = objArray[obj1].speed();
                 var v2 = objArray[obj2].speed();
 
                 var dx1F = (v1 * Math.cos(theta1 - phi) * (m1-m2) + 2*m2*v2*Math.cos(theta2 - phi)) / (m1+m2) * Math.cos(phi) + v1*Math.sin(theta1-phi) * Math.cos(phi+Math.PI/2);
